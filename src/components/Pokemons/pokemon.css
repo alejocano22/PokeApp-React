@@ -1,0 +1,28 @@
+.pokemonList {
+  display: grid;
+  grid-template-columns: repeat(5, auto);
+  grid-gap: 2rem;
+  list-style: none;
+  padding: 0 2rem;
+}
+
+.pokemon img {
+  width: 80%;
+}
+
+.pokemon {
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-radius: 5px;
+  box-shadow: 2px 2px 2px 2px var(--pokemon-gray);
+}
+
+.pokemon:hover {
+  background: rgb(211, 211, 211);
+}
+
+.load {
+  margin: 2rem;
+}

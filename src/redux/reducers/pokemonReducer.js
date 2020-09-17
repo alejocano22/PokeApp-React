@@ -1,7 +1,7 @@
 import { FETCH_POST_REQUEST, FETCH_POST_SUCCESS, FETCH_POST_ERROR } from '../actions/pokemonActions';
 
 const initialState = {
-  pokemon: {},
+  pokemon: [],
   isFeching: false,
   error: null 
 }
@@ -18,7 +18,7 @@ function pokemon (state = initialState, action){
       return {
         ...state,
         isFeching: false,
-        pokemon: action.payload.pokemon
+        pokemon: [ ...state.pokemon, action.payload.pokemon]
       }
     case FETCH_POST_ERROR:
       return {
