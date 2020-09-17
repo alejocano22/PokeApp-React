@@ -12,7 +12,6 @@ function pokemon (state = initialState, action){
       return {
         ...state,
         isFeching: true,
-        
       }
     case FETCH_POST_SUCCESS:
       return {
@@ -24,7 +23,7 @@ function pokemon (state = initialState, action){
       return {
         ...state,
         isFeching: false,
-        pokemon: action.payload.error
+        error: action.payload.error
       }
     default:
       return state;
