@@ -1,9 +1,11 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import { fetchPokemonList } from '../../redux/actions/pokemonListActions'
 import { fetchPokemon, fetchSpecies ,openModal } from '../../redux/actions/pokemonCardActions'
 import { fetchPokemon2, fetchSpecies2 , openModal2 } from '../../redux/actions/pokemonComparisonActions'
 import './pokemon.css'
+import store from '../../redux/store';
+import InfiniteScroll from 'react-infinite-scroll-component';
 
 const Pokemon = (props) =>{
 
@@ -17,31 +19,71 @@ const Pokemon = (props) =>{
       props.fetchSpecies2('https://pokeapi.co/api/v2/pokemon-species/'+name);
       props.openModal2();
     }
-    
   }
+
+  useEffect((dispatch)=>{
+    console.log('En use Efect')
+    store.dispatch(fetchPokemonList('https://pokeapi.co/api/v2/pokemon/'))
+  },[])
 
   const getPokemon = (() =>{
     props.fetchPokemonList(props.pokemonList.next)
+    
   })
   
   return(  
     <div>
-      <ul className='pokemonList'>
-        {props.pokemonList.pokemons.filter(poke => poke.name.includes(props.search.search)).map((pokemon, index) =>(
-          <li key={index} className='pokemon' onClick={()=>(click(pokemon.url, pokemon.name))}>
-            <img
-              src= {"https://github.com/PokeAPI/sprites/blob/146c91287ad01f6e15315bbd733fd7442c91fe6d/sprites/pokemon/"+(props.pokemonList.pokemons.indexOf(pokemon)+1)+".png?raw=true"}
-              alt={pokemon.name}>
-            </img>
-            <h3 className='pokemon-name'>{props.pokemonList.pokemons.indexOf(pokemon)+1} - {pokemon.name}</h3>
-          </li>
-        ))}
-      </ul>
-      <button
-        onClick={ getPokemon }
-        className='load'
-      >Load pokemons</button>     
+      <h1>{props.pokemonList.pokemons.length}</h1>
+      <InfiniteScroll
+        dataLength={props.pokemonList.pokemons.length}
+        next={getPokemon}
+        hasMore={true}
+        endMessage={
+          <p style={{ textAlign: "center" }}>
+            <b>Yay! You have seen it all</b>
+          </p>
+        }
+      >
+        <div>
+          <ul className='pokemonList'>
+            {props.pokemonList.pokemons.filter(poke => poke.name.includes(props.search.search)).map((pokemon, index) =>(
+              <li key={index} className='pokemon' onClick={()=>(click(pokemon.url, pokemon.name))}>
+                <img
+                  src= {"https://github.com/PokeAPI/sprites/blob/146c91287ad01f6e15315bbd733fd7442c91fe6d/sprites/pokemon/"+(props.pokemonList.pokemons.indexOf(pokemon)+1)+".png?raw=true"}
+                  alt={pokemon.name}>
+                </img>
+                <h3 className='pokemon-name'>{props.pokemonList.pokemons.indexOf(pokemon)+1} - {pokemon.name}</h3>
+              </li>
+            ))}
+          </ul>
+          <button
+            onClick={ getPokemon }
+            className='load'
+          >Load pokemons</button>     
+        </div>
+      </InfiniteScroll>
     </div>
+
+
+
+
+    // <div>
+    //   <ul className='pokemonList'>
+    //     {props.pokemonList.pokemons.filter(poke => poke.name.includes(props.search.search)).map((pokemon, index) =>(
+    //       <li key={index} className='pokemon' onClick={()=>(click(pokemon.url, pokemon.name))}>
+    //         <img
+    //           src= {"https://github.com/PokeAPI/sprites/blob/146c91287ad01f6e15315bbd733fd7442c91fe6d/sprites/pokemon/"+(props.pokemonList.pokemons.indexOf(pokemon)+1)+".png?raw=true"}
+    //           alt={pokemon.name}>
+    //         </img>
+    //         <h3 className='pokemon-name'>{props.pokemonList.pokemons.indexOf(pokemon)+1} - {pokemon.name}</h3>
+    //       </li>
+    //     ))}
+    //   </ul>
+    //   <button
+    //     onClick={ getPokemon }
+    //     className='load'
+    //   >Load pokemons</button>     
+    // </div>
   )
 }
 
