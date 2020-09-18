@@ -3,22 +3,18 @@ import { connect } from 'react-redux';
 import './header.css'
 import { updateSearch } from '../../redux/actions/headerAction'
 
-const Header = ({pokemon, updateSearch}) =>{
+const Header = ({currentPokemon, updateSearch}) =>{
 
   const handleOnChange = (event) =>{
     const pokemonName = event.target.value;
-    // console.log(pokemonName);
-    // console.log('------');
-    
-    // console.log(pokemon.pokemon) //Array
-    // pokemon.pokemon
-    //   .filter(poke => poke.name.includes(pokemonName))
-    //   .map(pokee => (console.log(pokee.name))
-
-    // )
     updateSearch(pokemonName)
   }
   
+  let currentPokemonName = '';
+  if(currentPokemon.isComparing){
+    currentPokemonName = currentPokemon.name;
+  }
+
   return(
     <div>
       <div className='header'>
@@ -36,6 +32,7 @@ const Header = ({pokemon, updateSearch}) =>{
             onChange={handleOnChange}
           ></input>
         </form>
+        <h1>{currentPokemonName}</h1>
       </div>
     </div>
   )

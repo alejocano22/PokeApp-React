@@ -1,4 +1,4 @@
-import { FETCH_POST_REQUEST, FETCH_POST_SUCCESS, FETCH_POST_ERROR } from '../actions/pokemonActions2';
+import { FETCH_LIST_REQUEST, FETCH_LIST_SUCCESS, FETCH_LIST_ERROR } from '../actions/pokemonListActions';
 
 const initialState = {
   count: 0,
@@ -9,14 +9,14 @@ const initialState = {
   error: null 
 }
 
-function pokemonReducer (state = initialState, action){
+function pokemonListReducer (state = initialState, action){
   switch(action.type){
-    case FETCH_POST_REQUEST:
+    case FETCH_LIST_REQUEST:
       return {
         ...state,
         isFeching: true,
       }
-    case FETCH_POST_SUCCESS:
+    case FETCH_LIST_SUCCESS:
       return {
         ...state,
         isFeching: false,
@@ -25,7 +25,7 @@ function pokemonReducer (state = initialState, action){
         previous: action.payload.previous,
         pokemons: [...state.pokemons, ...action.payload.pokemons]
       }
-    case FETCH_POST_ERROR:
+    case FETCH_LIST_ERROR:
       return {
         ...state,
         isFeching: false,
@@ -36,4 +36,4 @@ function pokemonReducer (state = initialState, action){
   }
 }
 
-export default pokemonReducer;
+export default pokemonListReducer;

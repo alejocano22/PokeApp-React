@@ -1,12 +1,12 @@
 import { combineReducers } from 'redux';
-// import pokemon from './pokemonReducer';
-import pokemon2 from './pokemonReducer2';
+import pokemonList from './pokemonListReducer';
 import search from './headerReducer';
-import currentPokemon from './currentPokemonReducer'
+import currentPokemon from './pokemonCardReducer';
+import comparisonPokemon from './pokemonComparisonReducer';
 
 export default combineReducers({
-  // pokemon,
-  pokemon2,
+  pokemonList,
   search,
-  currentPokemon
+  currentPokemon,
+  comparisonPokemon
 });

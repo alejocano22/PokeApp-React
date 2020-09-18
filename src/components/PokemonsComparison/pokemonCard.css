@@ -1,32 +1,3 @@
-.pokemonList {
-  display: grid;
-  grid-template-columns: repeat(5, auto);
-  grid-gap: 2rem;
-  list-style: none;
-  padding: 0 2rem;
-}
-
-.pokemon img {
-  width: 80%;
-}
-
-.pokemon {
-  cursor: pointer;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  border-radius: 5px;
-  box-shadow: 2px 2px 2px 2px var(--pokemon-gray);
-}
-
-.pokemon:hover {
-  background: rgb(211, 211, 211);
-}
-
-.load {
-  margin: 2rem;
-}
-
 .modal {
   position: fixed;
   display: flex;
@@ -51,7 +22,8 @@
 }
 
 .card-image {
-  width: 100%;
+  width: 10rem;
+  height: auto;
 }
 
 .information {
@@ -69,4 +41,29 @@
   color: white;
   padding: 2rem 0;
   margin: 0;
+}
+
+.compare-button {
+  align-self: flex-end;
+  cursor: pointer;
+  border: 3px solid var(--pokemon-dark-yellow);
+  background: var(--pokemon-dark-yellow);
+  color: var(--pokemon-white);
+  margin: 1rem;
+  padding: 0.5rem;
+  border-radius: 5px;
+  font-size: 1rem;
+  box-shadow: 2px 2px 2px 2px var(--pokemon-gray);
+}
+
+.compare-button:hover,
+.compare-button:active {
+  background: var(--pokemon-yellow);
+  color: var(--pokemon-black);
+}
+
+.img-comp {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }

@@ -1,17 +1,16 @@
-export const FETCH_POST_REQUEST = 'FETCH_POST_REQUEST';
-export const FETCH_POST_SUCCESS = 'FETCH_POST_SUCCESS';
-export const FETCH_POST_ERROR = 'FETCH_POST_ERROR';
+export const FETCH_LIST_REQUEST = 'FETCH_LIST_REQUEST';
+export const FETCH_LIST_SUCCESS = 'FETCH_LIST_SUCCESS';
+export const FETCH_LIST_ERROR = 'FETCH_LIST_ERROR';
 
-export const fetchPokemon = (url) => (dispatch) => {  
+export const fetchPokemonList = (url) => (dispatch) => {  
   dispatch({
-    type: FETCH_POST_REQUEST
+    type: FETCH_LIST_REQUEST
   })
-
   fetch(url)
     .then(res => res.json())
     .then(pokemon => {
       dispatch({
-        type: FETCH_POST_SUCCESS,
+        type: FETCH_LIST_SUCCESS,
         payload: {
           count: pokemon.count,
           next: pokemon.next,
@@ -21,7 +20,7 @@ export const fetchPokemon = (url) => (dispatch) => {
       })
     }).catch(error =>{
       dispatch({
-        type: FETCH_POST_ERROR,
+        type: FETCH_LIST_ERROR,
         payload: {
           error: error.toString()
         }
