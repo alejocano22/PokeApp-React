@@ -34,12 +34,18 @@ const Pokemon = (props) =>{
     props.fetchPokemonList(props.pokemonList.next)
     
   })
+
+  let currentPokemonName = '';
+  if(props.currentPokemon.isComparing){
+    currentPokemonName = props.currentPokemon.name;
+  }
   
   return(  
     <div>
       <PokemonCard/>
       <PokemonsComparison/>
-      <Header/>
+      <Header hiddenSearch={false}/>
+      <h1>{currentPokemonName}</h1>
       <InfiniteScroll
         dataLength={props.pokemonList.pokemons.length}
         next={getPokemon}
