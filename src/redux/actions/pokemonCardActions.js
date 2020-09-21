@@ -1,77 +1,67 @@
-export const FETCH_POKEMON_REQUEST = 'FETCH_POKEMON_REQUEST';
-export const FETCH_POKEMON_SUCCESS = 'FETCH_POKEMON_SUCCESS';
-export const FETCH_POKEMON_ERROR = 'FETCH_POKEMON_ERROR';
-export const FETCH_SPECIES_REQUEST = 'FETCH_SPECIES_REQUEST';
-export const FETCH_SPECIES_SUCCESS = 'FETCH_SPECIES_SUCCESS';
-export const FETCH_SPECIES_ERROR = 'FETCH_SPECIES_ERROR';
-export const OPEN_MODAL = 'OPEN_MODAL';
-export const CLOSE_MODAL = 'CLOSE_MODAL';
+import { fetchPokemon, fetchSpecies } from '../../utils';
+export const FETCH_CURRENT_POKEMON_REQUEST = 'FETCH_CURRENT_POKEMON_REQUEST';
+export const FETCH_CURRENT_POKEMON_SUCCESS = 'FETCH_CURRENT_POKEMON_SUCCESS';
+export const FETCH_CURRENT_POKEMON_ERROR = 'FETCH_CURRENT_POKEMON_ERROR';
+export const FETCH_CURRENT_SPECIES_REQUEST = 'FETCH_CURRENT_SPECIES_REQUEST';
+export const FETCH_CURRENT_SPECIES_SUCCESS = 'FETCH_CURRENT_SPECIES_SUCCESS';
+export const FETCH_CURRENT_SPECIES_ERROR = 'FETCH_CURRENT_SPECIES_ERROR';
+export const OPEN_CURRENT_POKEMON_MODAL = 'OPEN_CURRENT_POKEMON_MODAL';
+export const CLOSE_CURRENT_POKEMON_MODAL = 'CLOSE_CURRENT_POKEMON_MODAL';
 export const IS_COMPARING = 'IS_COMPARING';
 export const IS_NOT_COMPARING = 'IS_NOT_COMPARING';
 
-
-export const fetchPokemon = (url) => (dispatch) => {  
+export const fetchCurrentPokemon = (url) => async (dispatch) => {
   dispatch({
-    type: FETCH_POKEMON_REQUEST
+    type: FETCH_CURRENT_POKEMON_REQUEST
   })
-  fetch(url)
-    .then(res => res.json())
-    .then(pokemon => {
-      dispatch({
-        type: FETCH_POKEMON_SUCCESS,
-        payload: {
-          name: pokemon.name,
-          height: pokemon.height,
-          weight: pokemon.weight,
-          id: pokemon.id
-        }
-      })
-    }).catch(error =>{
-      dispatch({
-        type: FETCH_POKEMON_ERROR,
-        payload: {
-          error: error.toString()
-        }
-      })
+  const { payload } = await fetchPokemon(url);
+  if(payload.error){
+    dispatch({
+      type: FETCH_CURRENT_POKEMON_ERROR,
+      payload: {
+        error: payload.error
+      }
     })
+  }else{
+    dispatch({
+      type: FETCH_CURRENT_POKEMON_SUCCESS,
+      payload: payload
+    })
+  }
 }
 
-export const fetchSpecies = (url) => (dispatch) => {  
+export const fetchCurrentSpecies = (url) => async (dispatch) => {  
   dispatch({
-    type: FETCH_SPECIES_REQUEST
+    type: FETCH_CURRENT_SPECIES_REQUEST
   })
-  fetch(url)
-    .then(res => res.json())
-    .then(pokemon => {
-      dispatch({
-        type: FETCH_SPECIES_SUCCESS,
-        payload: {
-          description: pokemon.flavor_text_entries.filter(entry => entry.language.name === 'en')[0].flavor_text,
-          genderRate: pokemon.gender_rate
-        }
-      })
-    }).catch(error =>{
-      dispatch({
-        type: FETCH_SPECIES_ERROR,
-        payload: {
-          error: error.toString()
-        }
-      })
+  const { payload } = await fetchSpecies(url);
+  if(payload.error){
+    dispatch({
+      type: FETCH_CURRENT_SPECIES_ERROR,
+      payload: {
+        error: payload.error
+      }
     })
+  }else{
+    dispatch({
+      type: FETCH_CURRENT_SPECIES_SUCCESS,
+      payload: payload
+    })
+  }
 }
 
-export const openModal = () => (dispatch) =>{
+export const openCurrentPokemonModal = () => (dispatch) =>{
   dispatch({
-    type: OPEN_MODAL,
+    type: OPEN_CURRENT_POKEMON_MODAL,
     payload: {
       isActive: true
     }
   })
 }
 
-export const closeModal = () => (dispatch) =>{
+export const closeCurrentPokemonModal = () => (dispatch) =>{
   dispatch({
-    type: CLOSE_MODAL,
+    type: CLOSE_CURRENT_POKEMON_MODAL,
     payload: {
       isActive: false
     }

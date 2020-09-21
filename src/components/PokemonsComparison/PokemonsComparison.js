@@ -1,13 +1,13 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import './pokemonCard.css'
-import { closeModal2 } from '../../redux/actions/pokemonComparisonActions'
+import { closeComparisonPokemonModal } from '../../redux/actions/pokemonComparisonActions'
 import { isNotComparing } from '../../redux/actions/pokemonCardActions'
 
 const PokemonCard = (props) =>{
 
   const handleClose = () => {
-    props.closeModal2();
+    props.closeComparisonPokemonModal();
     props.isNotComparing();
   }
 
@@ -15,7 +15,7 @@ const PokemonCard = (props) =>{
     event.stopPropagation();
   }
 
-  if(props.comparisonPokemon.comparison){
+  if(props.comparisonPokemon.isActive){
     return(  
       <div className='modal' onClick={handleClose}>
         <div className='card' onClick={handleProp}>
@@ -53,7 +53,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    closeModal2: () => dispatch(closeModal2()),
+    closeComparisonPokemonModal: () => dispatch(closeComparisonPokemonModal()),
     isNotComparing: () => dispatch(isNotComparing()),
   }
 }

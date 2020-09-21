@@ -8,8 +8,8 @@ import PokemonsComparison from './components/PokemonsComparison'
 
 const App = () => (
   <Provider store={store}>
-    <PokemonCard></PokemonCard>
-    <PokemonsComparison></PokemonsComparison>
+    <PokemonCard/>
+    <PokemonsComparison/>
     <Header/>
     <Pokemons/>
   </Provider>

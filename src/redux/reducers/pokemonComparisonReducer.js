@@ -1,69 +1,74 @@
-import { FETCH_POKEMON2_REQUEST, FETCH_POKEMON2_SUCCESS, FETCH_POKEMON2_ERROR, 
-  FETCH_SPECIES2_REQUEST, FETCH_SPECIES2_SUCCESS, FETCH_SPECIES2_ERROR,
-  OPEN_MODAL2, CLOSE_MODAL2 } from '../actions/pokemonComparisonActions';
+import { FETCH_COMPARISON_POKEMON_REQUEST, FETCH_COMPARISON_POKEMON_SUCCESS, FETCH_COMPARISON_POKEMON_ERROR, 
+  FETCH_COMPARISON_SPECIES_REQUEST, FETCH_COMPARISON_SPECIES_SUCCESS, FETCH_COMPARISON_SPECIES_ERROR,
+  OPEN_COMPARISON_POKEMON_MODAL, CLOSE_COMPARISON_POKEMON_MODAL } from '../actions/pokemonComparisonActions';
 
 const initialState = {
+  id: 0,
   name: '',
   height: 0,
   weight: 0,
-  id: 0,
   genderRate: 0,
+  types: [],
+  abilities: [], 
+  stats: [],
   description: '',
-  comparison: false,
+  isActive: false,
   isFechingPokemon: false,
   isFechingSpecies: false,
   error: null 
 }
 
-function pokemonComparisonReducer (state = initialState, action){
-  switch(action.type){
-    case FETCH_POKEMON2_REQUEST:
+function pokemonComparisonReducer (state = initialState, { type, payload }){
+  switch(type){
+    case FETCH_COMPARISON_POKEMON_REQUEST:
       return {
         ...state,
         isFechingPokemon: true,
       }
-    case FETCH_POKEMON2_SUCCESS:
+    case FETCH_COMPARISON_POKEMON_SUCCESS:
+      return {
+        ...state,
+        id: payload.id,
+        name: payload.name,
+        height: payload.height,
+        weight: payload.weight,
+        types: payload.types,
+        abilities: payload.abilities,
+        stats: payload.stats
+      }
+    case FETCH_COMPARISON_POKEMON_ERROR:
       return {
         ...state,
         isFechingPokemon: false,
-        name: action.payload.name,
-        height: action.payload.height,
-        weight: action.payload.weight,
-        id: action.payload.id
+        error: payload.error
       }
-    case FETCH_POKEMON2_ERROR:
-      return {
-        ...state,
-        isFechingPokemon: false,
-        error: action.payload.error
-      }
-    case FETCH_SPECIES2_REQUEST:
+    case FETCH_COMPARISON_SPECIES_REQUEST:
       return {
         ...state,
         isFechingSpecies: true,
       }
-    case FETCH_SPECIES2_SUCCESS:
+    case FETCH_COMPARISON_SPECIES_SUCCESS:
       return {
         ...state,
         isFechingSpecies: false,
-        description: action.payload.description,
-        genderRate: action.payload.genderRate        
+        description: payload.description,
+        genderRate: payload.genderRate        
       }
-    case FETCH_SPECIES2_ERROR:
+    case FETCH_COMPARISON_SPECIES_ERROR:
       return {
         ...state,
         isFechingSpecies: false,
-        error: action.payload.error
+        error: payload.error
       }
-    case OPEN_MODAL2:
+    case OPEN_COMPARISON_POKEMON_MODAL:
       return {
         ...state,
-        comparison: action.payload.comparison
+        isActive: payload.comparison
       }
-    case CLOSE_MODAL2:
+    case CLOSE_COMPARISON_POKEMON_MODAL:
       return {
         ...state,
-        comparison: action.payload.comparison
+        isActive: payload.comparison
       }
     default:
       return state;

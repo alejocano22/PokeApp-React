@@ -1,18 +1,18 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import './pokemonCard.css'
-import { closeModal, isComparing } from '../../redux/actions/pokemonCardActions'
+import { closeCurrentPokemonModal, isComparing } from '../../redux/actions/pokemonCardActions'
 
 const PokemonCard = (props) =>{
 
   const handleClose = () => {
-    props.closeModal();
+    props.closeCurrentPokemonModal();
   }
   
   const compare = () => {
     console.log('comparing...')
     props.isComparing();
-    props.closeModal();
+    props.closeCurrentPokemonModal();
   }
 
   const handleProp = (event) => {
@@ -30,7 +30,7 @@ const PokemonCard = (props) =>{
     return(  
       <div className='modal' onClick={handleClose}>
         <div className='card' onClick={handleProp}>
-          <h1 className='card-title'>{props.currentPokemon.name.toUpperCase()}</h1>
+          <h1 className='card-title'>{props.currentPokemon.name.toUpperCase()}<button onClick={handleClose}>X</button>  </h1>
           <button className='compare-button' onClick={compare}>Compare to...</button>
           <div className='information'>
             <img
@@ -43,16 +43,26 @@ const PokemonCard = (props) =>{
               <h4>Gender: {gender}</h4>
               <h4>Height: {props.currentPokemon.height}</h4>
               <h4>Weight: {props.currentPokemon.weight}</h4> 
-              <h4>Gender: Indefinido</h4> 
-              <h4>Abilities: Indefinido</h4> 
-              <h4>Type: Indefinido</h4> 
-              <h4>Id: {props.currentPokemon.id}</h4> 
+              <h4>Type</h4>
+              <ul> 
+                {props.currentPokemon.types.map((type, index)=>(
+                  <li key={index}>{type.type.name}</li>
+                ))}
+              </ul>
+              <h4>Type</h4>
+              <ul> 
+                {props.currentPokemon.abilities.map((ability, index)=>(
+                  <li key={index}>{ability.ability.name}</li>
+                ))}
+              </ul>
+              <h4>Stats</h4>
+              <ul> 
+                {props.currentPokemon.stats.map((stat, index)=>(
+                  <li key={index}>{stat.stat.name}: {stat.base_stat}</li>
+                ))}
+              </ul>
             </div>
           </div>
-          
-          
-          
-          <button onClick={handleClose}>Close</button>  
         </div>
       </div>
     )
@@ -72,7 +82,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    closeModal: () => dispatch(closeModal()),
+    closeCurrentPokemonModal: () => dispatch(closeCurrentPokemonModal()),
     isComparing: () => dispatch(isComparing())
   }
 }
