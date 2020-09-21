@@ -7,6 +7,10 @@ import './pokemon.css'
 import store from '../../redux/store';
 import InfiniteScroll from 'react-infinite-scroll-component';
 
+import PokemonCard from '../PokemonCard'
+import PokemonsComparison from '../PokemonsComparison'
+import Header from '../Header'
+
 const Pokemon = (props) =>{
 
   const click = (url, name) => {
@@ -33,6 +37,9 @@ const Pokemon = (props) =>{
   
   return(  
     <div>
+      <PokemonCard/>
+      <PokemonsComparison/>
+      <Header/>
       <InfiniteScroll
         dataLength={props.pokemonList.pokemons.length}
         next={getPokemon}
