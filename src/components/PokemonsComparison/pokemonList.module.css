@@ -1,10 +1,25 @@
+.scroll {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.pokemons {
+  display: flex;
+  justify-content: center;
+  margin: 0 5rem;
+  max-width: 80rem;
+  width: 100%;
+}
+
 .pokemonList {
-  height: auto;
   display: grid;
   grid-template-columns: repeat(5, auto);
   grid-gap: 2rem;
   list-style: none;
-  padding: 0 2rem;
+  padding: 0;
+  margin: 0;
+  width: 100%;
 }
 
 .pokemon img {
@@ -38,4 +53,22 @@
 
 .load {
   margin: 2rem;
+}
+
+.compare-pokemon-box {
+  position: sticky;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  top: 5rem;
+  padding: 1rem;
+  z-index: 1;
+  margin-left: 3rem;
+  border: 2px solid black;
+  width: 12rem;
+  margin: 1rem 2rem 0 auto;
+}
+
+.compare-pokemon {
+  margin: 0;
 }

@@ -1,17 +1,17 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
-import { fetchPokemonList } from '../../redux/actions/pokemonListActions'
-import { fetchCurrentPokemon, fetchCurrentSpecies, openCurrentPokemonModal } from '../../redux/actions/pokemonCardActions'
-import { fetchComparisonPokemon, fetchComparisonSpecies, openComparisonPokemonModal } from '../../redux/actions/pokemonComparisonActions'
-import './pokemon.css'
-import store from '../../redux/store';
 import InfiniteScroll from 'react-infinite-scroll-component';
+import store from '../../redux/store';
+import { fetchPokemonList } from '../../redux/actions/pokemonListActions';
+import { fetchCurrentPokemon, fetchCurrentSpecies, openCurrentPokemonModal } from '../../redux/actions/pokemonCardActions';
+import { fetchComparisonPokemon, fetchComparisonSpecies, openComparisonPokemonModal } from '../../redux/actions/pokemonComparisonActions';
+import Header from '../Header';
+import PokemonCard from '../PokemonCard';
+import PokemonsComparison from '../PokemonsComparison';
+import PokemonComparisonBox from '../PokemonsComparison/PokemonComparisonBox'
+import style from './pokemonList.module.css';
 
-import PokemonCard from '../PokemonCard'
-import PokemonsComparison from '../PokemonsComparison'
-import Header from '../Header'
-
-const Pokemon = (props) =>{
+const PokemonList = (props) =>{
 
   const click = (url, name) => {
     if(!props.currentPokemon.isComparing){
@@ -25,55 +25,47 @@ const Pokemon = (props) =>{
     }
   }
 
-  useEffect((dispatch)=>{
+  useEffect(()=>{
     console.log('En use Efect')
     store.dispatch(fetchPokemonList('https://pokeapi.co/api/v2/pokemon/'))
   },[])
 
   const getPokemon = (() =>{
-    props.fetchPokemonList(props.pokemonList.next)
-    
+    props.fetchPokemonList(props.pokemonList.next) 
   })
-
-  let currentPokemonName = '';
-  if(props.currentPokemon.isComparing){
-    currentPokemonName = props.currentPokemon.name;
-  }
   
   return(  
     <div>
       <PokemonCard/>
       <PokemonsComparison/>
       <Header hiddenSearch={false}/>
-      <h1>{currentPokemonName}</h1>
+      <PokemonComparisonBox/>
       <InfiniteScroll
         dataLength={props.pokemonList.pokemons.length}
         next={getPokemon}
         hasMore={true}
         endMessage={
-          <p style={{ textAlign: "center" }}>
-            <b>Yay! You have seen it all</b>
-          </p>
+          <p className={style['end-message']}>Yay! You have seen it all</p>
         }
+        className={style['scroll']}
       >
-        <div>
-          <ul className='pokemonList'>
+        <div className={style['pokemons']}>
+          <ul className={style['pokemonList']}>
             {props.pokemonList.pokemons.filter(poke => poke.name.includes(props.search.search)).map((pokemon, index) =>(
-              <li key={index} className='pokemon' onClick={()=>(click(pokemon.url, pokemon.name))}>
+              <li key={index} className={style['pokemon']} onClick={()=>(click(pokemon.url, pokemon.name))}>
                 <img
                   src= {"https://github.com/PokeAPI/sprites/blob/146c91287ad01f6e15315bbd733fd7442c91fe6d/sprites/pokemon/"+(props.pokemonList.pokemons.indexOf(pokemon)+1)+".png?raw=true"}
                   alt={pokemon.name}>
                 </img>
-                <h3 className='pokemon-name'>{props.pokemonList.pokemons.indexOf(pokemon)+1} - {pokemon.name}</h3>
+                <h3 className={style['pokemon-name']}>{pokemon.name.toUpperCase()}</h3>
               </li>
             ))}
-          </ul>   
+          </ul>  
         </div>
       </InfiniteScroll>
     </div>
   )
 }
-
 
 const mapStateToProps = (state) => {
   return state;
@@ -91,5 +83,4 @@ const mapDispatchToProps = (dispatch) => {
   }
 }
 
-
-export default connect(mapStateToProps, mapDispatchToProps)(Pokemon);
+export default connect(mapStateToProps, mapDispatchToProps)(PokemonList);

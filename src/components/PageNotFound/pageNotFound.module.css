@@ -40,8 +40,8 @@
   padding: 0.5rem 3rem;
   color: var(--pokemon-yellow);
   background: var(--pokemon-blue);
+  border: 2px solid var(--pokemon-blue);
   border-radius: 20px;
-  box-shadow: 2px 2px 2px 2px var(--pokemon-gray);
 }
 
 .back-home:hover,

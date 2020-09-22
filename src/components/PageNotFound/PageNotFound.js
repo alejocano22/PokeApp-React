@@ -1,7 +1,7 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import NotFoundImage from '../../images/psyduck.png';
-import styles from './notFoundRoute.module.css';
+import styles from './pageNotFound.module.css';
 
 const NotFoundRoute = () =>{
   return(
