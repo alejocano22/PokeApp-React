@@ -23,7 +23,7 @@ const Header = ({updateSearch, hiddenSearch}) =>{
           ></img>
           PokéApp
         </NavLink>
-        <NavLink to='/pokemons' className={styles['link']} activeClassName={styles['active-link']}>Pokemons</NavLink>
+        <NavLink to='/pokemons' className={styles['link']} activeClassName={styles['active-link']}>Pokémon</NavLink>
         <form className={styles['search-form']}>
           <input
             className={styles['search']}

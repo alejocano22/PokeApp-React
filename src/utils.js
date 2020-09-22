@@ -1,3 +1,7 @@
+export const pokemonImagesUrl = 'https://github.com/PokeAPI/sprites/blob/146c91287ad01f6e15315bbd733fd7442c91fe6d/sprites/pokemon/';
+export const pokemonApiUrl = 'https://pokeapi.co/api/v2/pokemon/';
+export const speciesApiUrl = 'https://pokeapi.co/api/v2/pokemon-species/';
+
 export const fetchPokemon = (url) => {  
   return fetch(url)
     .then(res => res.json())

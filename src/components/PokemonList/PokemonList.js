@@ -5,32 +5,31 @@ import store from '../../redux/store';
 import { fetchPokemonList } from '../../redux/actions/pokemonListActions';
 import { fetchCurrentPokemon, fetchCurrentSpecies, openCurrentPokemonModal } from '../../redux/actions/pokemonCardActions';
 import { fetchComparisonPokemon, fetchComparisonSpecies, openComparisonPokemonModal } from '../../redux/actions/pokemonComparisonActions';
+import { pokemonImagesUrl, pokemonApiUrl, speciesApiUrl } from '../../utils'
 import Header from '../Header';
 import PokemonCard from '../PokemonCard';
 import PokemonsComparison from '../PokemonsComparison';
 import PokemonComparisonBox from '../PokemonsComparison/PokemonComparisonBox'
-import style from './pokemonList.module.css';
+import styles from './pokemonList.module.css';
 
-const PokemonList = (props) =>{
+const PokemonList = (props) =>{  
+  useEffect(()=>{
+    store.dispatch(fetchPokemonList(pokemonApiUrl))
+  },[])
 
-  const click = (url, name) => {
+  const clickOnPokemon = (url, name) => {
     if(!props.currentPokemon.isComparing){
       props.fetchCurrentPokemon(url);
-      props.fetchCurrentSpecies('https://pokeapi.co/api/v2/pokemon-species/'+name)
+      props.fetchCurrentSpecies(speciesApiUrl+name)
       props.openCurrentPokemonModal();
     }else{
       props.fetchComparisonPokemon(url);
-      props.fetchComparisonSpecies('https://pokeapi.co/api/v2/pokemon-species/'+name);
+      props.fetchComparisonSpecies(speciesApiUrl+name);
       props.openComparisonPokemonModal();
     }
   }
 
-  useEffect(()=>{
-    console.log('En use Efect')
-    store.dispatch(fetchPokemonList('https://pokeapi.co/api/v2/pokemon/'))
-  },[])
-
-  const getPokemon = (() =>{
+  const getPokemonList = (() =>{
     props.fetchPokemonList(props.pokemonList.next) 
   })
   
@@ -41,23 +40,21 @@ const PokemonList = (props) =>{
       <Header hiddenSearch={false}/>
       <PokemonComparisonBox/>
       <InfiniteScroll
-        dataLength={props.pokemonList.pokemons.length}
-        next={getPokemon}
+        dataLength={props.pokemonList.pokemonList.length}
+        next={getPokemonList}
         hasMore={true}
-        endMessage={
-          <p className={style['end-message']}>Yay! You have seen it all</p>
-        }
-        className={style['scroll']}
+        className={styles['scroll']}
       >
-        <div className={style['pokemons']}>
-          <ul className={style['pokemonList']}>
-            {props.pokemonList.pokemons.filter(poke => poke.name.includes(props.search.search)).map((pokemon, index) =>(
-              <li key={index} className={style['pokemon']} onClick={()=>(click(pokemon.url, pokemon.name))}>
+        <div className={styles['pokemon']}>
+          <h1 className={styles['list-title']}>List of Pokémon</h1>
+          <ul className={styles['pokemon-list']}>
+            {props.pokemonList.pokemonList.filter(poke => poke.name.includes(props.search.search)).map((pokemon, index) =>(
+              <li key={index} className={styles['pokemon-item']} onClick={()=>(clickOnPokemon(pokemon.url, pokemon.name))}>
                 <img
-                  src= {"https://github.com/PokeAPI/sprites/blob/146c91287ad01f6e15315bbd733fd7442c91fe6d/sprites/pokemon/"+(props.pokemonList.pokemons.indexOf(pokemon)+1)+".png?raw=true"}
+                  src= {pokemonImagesUrl+(props.pokemonList.pokemonList.indexOf(pokemon)+1)+".png?raw=true"}
                   alt={pokemon.name}>
                 </img>
-                <h3 className={style['pokemon-name']}>{pokemon.name.toUpperCase()}</h3>
+                <h3 className={styles['pokemon-name']}>{pokemon.name.toUpperCase()}</h3>
               </li>
             ))}
           </ul>  

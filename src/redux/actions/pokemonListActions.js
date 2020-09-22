@@ -15,7 +15,7 @@ export const fetchPokemonList = (url) => (dispatch) => {
           count: pokemon.count,
           next: pokemon.next,
           previous: pokemon.previous,
-          pokemons: pokemon.results
+          pokemonList: pokemon.results
         }
       })
     }).catch(error =>{

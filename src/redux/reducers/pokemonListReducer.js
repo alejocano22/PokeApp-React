@@ -4,7 +4,7 @@ const initialState = {
   count: 0,
   next: 'https://pokeapi.co/api/v2/pokemon/',
   previous: '',
-  pokemons: [],
+  pokemonList: [],
   isFeching: false,
   error: null 
 }
@@ -23,7 +23,7 @@ function pokemonListReducer (state = initialState, action){
         count: action.payload.count,
         next: action.payload.next,
         previous: action.payload.previous,
-        pokemons: [...state.pokemons, ...action.payload.pokemons]
+        pokemonList: [...state.pokemonList, ...action.payload.pokemonList]
       }
     case FETCH_LIST_ERROR:
       return {

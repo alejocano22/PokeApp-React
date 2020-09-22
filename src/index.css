@@ -6,7 +6,9 @@
   --pokemon-dark-yellow: #b3a125;
   --pokemon-white: #ffffff;
   --pokemon-black: #000000;
+  --pokemon-transparent-black: #00000080;
   --pokemon-gray: #808080;
+  --pokemon-light-gray: #e6e6e6;
 }
 
 body {
