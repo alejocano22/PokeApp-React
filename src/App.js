@@ -6,7 +6,7 @@ import Welcome from './components/Welcome'
 import Header from './components/Header'
 import Pokemons from './components/PokemonList'
 import PokemonCard from './components/PokemonCard'
-import PokemonsComparison from './components/PokemonsComparison'
+import PokemonComparison from './components/PokemonComparison'
 import PageNotFound from './components/PageNotFound'
 
 const App = () => (

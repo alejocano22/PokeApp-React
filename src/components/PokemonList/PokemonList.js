@@ -8,8 +8,8 @@ import { fetchComparisonPokemon, fetchComparisonSpecies, openComparisonPokemonMo
 import { pokemonImagesUrl, pokemonApiUrl, speciesApiUrl } from '../../utils'
 import Header from '../Header';
 import PokemonCard from '../PokemonCard';
-import PokemonsComparison from '../PokemonsComparison';
-import PokemonComparisonBox from '../PokemonsComparison/PokemonComparisonBox'
+import PokemonComparison from '../PokemonComparison';
+import PokemonComparisonBox from '../PokemonComparison/PokemonComparisonBox';
 import styles from './pokemonList.module.css';
 
 const PokemonList = (props) =>{  
@@ -36,7 +36,7 @@ const PokemonList = (props) =>{
   return(  
     <div>
       <PokemonCard/>
-      <PokemonsComparison/>
+      <PokemonComparison/>
       <Header hiddenSearch={false}/>
       <PokemonComparisonBox/>
       <InfiniteScroll
@@ -54,7 +54,7 @@ const PokemonList = (props) =>{
                   src= {pokemonImagesUrl+(props.pokemonList.pokemonList.indexOf(pokemon)+1)+".png?raw=true"}
                   alt={pokemon.name}>
                 </img>
-                <h3 className={styles['pokemon-name']}>{pokemon.name.toUpperCase()}</h3>
+                <h2 className={styles['pokemon-name']}>{pokemon.name.toUpperCase()}</h2>
               </li>
             ))}
           </ul>  

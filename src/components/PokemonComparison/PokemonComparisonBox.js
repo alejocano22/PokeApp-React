@@ -1,18 +1,20 @@
 import React from 'react';
-import './pokemonCard.css'
 import { connect } from 'react-redux';
-import style from './pokemonList.module.css';
+import styles from './pokemonComparisonBox.module.css';
 
 const PokemonComparisonBox = (props) =>{
+
   let currentPokemonName = '';
+  
   if(props.currentPokemon.isComparing){
     currentPokemonName = props.currentPokemon.name;
-  }  
+  }
+
   if(props.currentPokemon.isComparing){
     return(  
-      <div className={style['compare-pokemon-box']}>
-        <h4 className={style['compare-pokemon']}>Comparing pokemon...</h4>
-        <h5 className={style['compare-pokemon']}>{currentPokemonName}</h5>
+      <div className={styles['compare-pokemon-box']}>
+        <h3 className={styles['compare-pokemon-box-title']}>Comparing pokemon...</h3>
+        <h4 className={styles['compare-pokemon']}>{currentPokemonName.toUpperCase()}</h4>
       </div>
     )
   }else{
@@ -23,6 +25,5 @@ const PokemonComparisonBox = (props) =>{
 const mapStateToProps = (state) => {
   return state;
 }
-
 
 export default connect(mapStateToProps)(PokemonComparisonBox);
