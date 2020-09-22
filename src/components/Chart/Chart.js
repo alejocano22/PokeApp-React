@@ -4,6 +4,20 @@ import { Bar } from 'react-chartjs-2';
 import styles from './chart.module.css';
 
 const Chart2 = (props) =>{
+  let comparisonPokemonData = {
+    label: props.comparisonPokemon.name,
+    data: props.comparisonPokemon.stats.map(({base_stat}) => (base_stat)),
+    backgroundColor:[
+      '#b3a125',
+      '#b3a125',
+      '#b3a125',
+      '#b3a125',
+      '#b3a125',
+      '#b3a125',
+    ],
+    borderWidth: 5,
+    hidden: props.currentPokemon.isActive
+  }
 
   const data = {
     labels: props.currentPokemon.stats.map(({stat}) => (stat.name)),
@@ -20,7 +34,12 @@ const Chart2 = (props) =>{
           '#cc0000',
         ],
         borderWidth: 5
+      },
+      {
+        ...comparisonPokemonData,
+        hidden: props.currentPokemon.isActive
       }
+      
     ]
   }
 
@@ -53,6 +72,7 @@ const Chart2 = (props) =>{
       <Bar
         data={data}
         options={options}
+        datasetKeyProvider={()=>(Math.random())}
       /> 
     </div>
   )
