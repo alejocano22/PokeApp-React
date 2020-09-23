@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { closeCurrentPokemonModal, isComparing } from '../../redux/actions/pokemonCardActions';
-import { pokemonImagesUrl } from '../../utils';
+import { pokemonImagesUrl, getGender } from '../../utils';
 import Chart from '../Chart';
 import styles from './pokemonCard.module.css';
 
@@ -21,12 +21,7 @@ const PokemonCard = (props) =>{
   }
   
   if(props.currentPokemon.isActive){
-    let gender = 'Genderless';
-    if(props.currentPokemon.genderRate >= 4 ){
-      gender = 'Female';
-    }else if (props.currentPokemon.genderRate >= 0){
-      gender = 'Male';
-    }
+    const gender = getGender(props.currentPokemon.genderRate);
     return(  
       <div className={styles['pokemon-modal']} onClick={handleCloseModal}>
         <div className={styles['pokemon-card']} onClick={handlePropagation}>

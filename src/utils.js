@@ -42,3 +42,13 @@ export const fetchSpecies = (url) => {
       }
     ))
 }
+
+export const getGender = (rate) => {
+  let gender = 'Genderless';
+    if(rate >= 4 ){
+      gender = 'Female';
+    }else if (rate >= 0){
+      gender = 'Male';
+    }
+  return gender;
+}
