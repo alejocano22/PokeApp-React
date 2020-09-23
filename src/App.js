@@ -1,6 +1,6 @@
 import React from 'react';
 import { Provider } from 'react-redux';
-import { BrowserRouter, Route, HashRouter } from 'react-router-dom';
+import { Route, HashRouter, Switch } from 'react-router-dom';
 import store from './redux/store';
 import Welcome from './components/Welcome';
 import PokemonList from './components/PokemonList';
@@ -8,13 +8,13 @@ import PageNotFound from './components/PageNotFound';
 
 const App = () => (
   <Provider store={store}>
-    <BrowserRouter basename='/'>
-      <HashRouter>
-        <Route path='/' exact component={Welcome}></Route>
-        <Route path='/pokemon' component={PokemonList}></Route>
-        <Route path='*' exact={true} component={PageNotFound} />
-      </HashRouter>
-    </BrowserRouter>
+    <HashRouter basename='/'>
+      <Switch>
+        <Route exact path='/' component={Welcome}/>
+        <Route path='/pokemon' component={PokemonList}/>
+        <Route component={PageNotFound} />
+      </Switch>
+    </HashRouter>
   </Provider>
 );
 
