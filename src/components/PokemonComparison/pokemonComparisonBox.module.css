@@ -26,3 +26,19 @@
   font-size: 1.2rem;
   color: var(--pokemon-black);
 }
+
+@media (max-width: 900px) {
+  .compare-pokemon-box {
+    right: 2rem;
+    width: 8rem;
+  }
+
+  .compare-pokemon-box-title {
+    font-size: 0.6rem;
+  }
+
+  .compare-pokemon {
+    padding: 0.3rem 0 0 0;
+    font-size: 0.8rem;
+  }
+}

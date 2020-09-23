@@ -49,3 +49,19 @@
   color: var(--pokemon-blue);
   background: var(--pokemon-yellow);
 }
+
+@media (max-width: 900px) {
+  .not-found-image {
+    width: 5rem;
+  }
+
+  .not-found-message {
+    margin: 2rem;
+    font-size: 2rem;
+  }
+
+  .back-home {
+    font-size: 1rem;
+    padding: 0.3rem 1.5rem;
+  }
+}

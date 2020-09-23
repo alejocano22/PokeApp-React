@@ -18,6 +18,7 @@
   font-size: 3rem;
   -webkit-text-stroke: 1px black;
   color: var(--pokemon-red);
+  text-align: center;
 }
 
 .pokemon-list {
@@ -59,4 +60,19 @@
 
 .pokemon-item:hover {
   background: var(--pokemon-light-gray);
+}
+
+@media (max-width: 900px) {
+  .pokemon {
+    margin: 0 2rem;
+  }
+
+  .list-title {
+    margin: 2rem 0;
+    font-size: 2rem;
+  }
+
+  .pokemon-list {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }

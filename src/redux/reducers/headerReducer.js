@@ -1,19 +1,25 @@
-import { SEARCH } from '../actions/headerAction'
+import { SEARCH, HANDLE_MOBILE_ITEMS } from '../actions/headerAction'
 
 const initialState = {
-  search: ''
+  search: '',
+  showMobileItems: false,
 }
 
-function authorReducer(state = initialState, action){
+function headerReducer(state = initialState, action){
   switch(action.type){
     case SEARCH:
       return {
         ...state,
         search: action.payload.search
-      };
+      }
+    case HANDLE_MOBILE_ITEMS:
+      return {
+        ...state,
+        showMobileItems: !state.showMobileItems
+      }
     default:
       return state;
   }
 }
 
-export default authorReducer;
+export default headerReducer;

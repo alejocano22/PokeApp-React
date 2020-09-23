@@ -3,10 +3,7 @@ import { Provider } from 'react-redux';
 import { BrowserRouter, Route, Switch } from 'react-router-dom'
 import store from './redux/store';
 import Welcome from './components/Welcome'
-import Header from './components/Header'
-import Pokemons from './components/PokemonList'
-import PokemonCard from './components/PokemonCard'
-import PokemonComparison from './components/PokemonComparison'
+import PokemonList from './components/PokemonList'
 import PageNotFound from './components/PageNotFound'
 
 const App = () => (
@@ -14,7 +11,7 @@ const App = () => (
     <BrowserRouter>
       <Switch>
         <Route path='/' exact component={Welcome}></Route>
-        <Route path='/pokemons' component={Pokemons}></Route>
+        <Route path='/pokemon' component={PokemonList}></Route>
         <Route path='*' exact={true} component={PageNotFound} />
       </Switch>
     </BrowserRouter>

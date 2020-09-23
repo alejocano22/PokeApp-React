@@ -48,7 +48,7 @@ const PokemonList = (props) =>{
         <div className={styles['pokemon']}>
           <h1 className={styles['list-title']}>List of Pokémon</h1>
           <ul className={styles['pokemon-list']}>
-            {props.pokemonList.pokemonList.filter(poke => poke.name.includes(props.search.search)).map((pokemon, index) =>(
+            {props.pokemonList.pokemonList.filter(poke => poke.name.includes(props.header.search)).map((pokemon, index) =>(
               <li key={index} className={styles['pokemon-item']} onClick={()=>(clickOnPokemon(pokemon.url, pokemon.name))}>
                 <img
                   src= {pokemonImagesUrl+(props.pokemonList.pokemonList.indexOf(pokemon)+1)+".png?raw=true"}
