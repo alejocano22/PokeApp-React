@@ -9,27 +9,26 @@ const initialState = {
   error: null 
 }
 
-function pokemonListReducer (state = initialState, action){
-  switch(action.type){
+function pokemonListReducer (state = initialState, { type, payload }){
+  switch(type){
     case FETCH_LIST_REQUEST:
       return {
         ...state,
         isFeching: true,
       }
     case FETCH_LIST_SUCCESS:
+      console.log(payload)
       return {
         ...state,
         isFeching: false,
-        count: action.payload.count,
-        next: action.payload.next,
-        previous: action.payload.previous,
-        pokemonList: [...state.pokemonList, ...action.payload.pokemonList]
+        ...payload,
+        pokemonList: [...state.pokemonList, ...payload.pokemonList]
       }
     case FETCH_LIST_ERROR:
       return {
         ...state,
         isFeching: false,
-        error: action.payload.error
+        ...payload
       }
     default:
       return state;

@@ -1,7 +1,6 @@
 import { FETCH_CURRENT_POKEMON_REQUEST, FETCH_CURRENT_POKEMON_SUCCESS, FETCH_CURRENT_POKEMON_ERROR, 
   FETCH_CURRENT_SPECIES_REQUEST, FETCH_CURRENT_SPECIES_SUCCESS, FETCH_CURRENT_SPECIES_ERROR,
-  IS_COMPARING, IS_NOT_COMPARING,
-  OPEN_CURRENT_POKEMON_MODAL, CLOSE_CURRENT_POKEMON_MODAL } from '../actions/pokemonCardActions';
+  IS_COMPARING, SHOW_CURRENT_POKEMON_MODAL } from '../actions/pokemonCardActions';
 
 const initialState = {
   id: 0,
@@ -30,20 +29,13 @@ function pokemonReducer (state = initialState, { type, payload }){
     case FETCH_CURRENT_POKEMON_SUCCESS:
       return {
         ...state,
-        isFechingPokemon: false,
-        id: payload.id,
-        name: payload.name,
-        height: payload.height,
-        weight: payload.weight,
-        types: payload.types,
-        abilities: payload.abilities,
-        stats: payload.stats
+        ...payload
       }
     case FETCH_CURRENT_POKEMON_ERROR:
       return {
         ...state,
         isFechingPokemon: false,
-        error: payload.error
+        ...payload
       }
     case FETCH_CURRENT_SPECIES_REQUEST:
       return {
@@ -54,34 +46,24 @@ function pokemonReducer (state = initialState, { type, payload }){
       return {
         ...state,
         isFechingSpecies: false,
-        description: payload.description,
-        genderRate: payload.genderRate        
+        ...payload        
       }
     case FETCH_CURRENT_SPECIES_ERROR:
       return {
         ...state,
         isFechingSpecies: false,
-        error: payload.error
+        ...payload
       }
     case IS_COMPARING:
+      console.log(payload)
       return {
         ...state,
-        isComparing: payload.isComparing
+        ...payload
       }
-    case IS_NOT_COMPARING:
+    case SHOW_CURRENT_POKEMON_MODAL:
       return {
         ...state,
-        isComparing: payload.isComparing
-      }
-    case OPEN_CURRENT_POKEMON_MODAL:
-      return {
-        ...state,
-        isActive: payload.isActive
-      }
-    case CLOSE_CURRENT_POKEMON_MODAL:
-      return {
-        ...state,
-        isActive: payload.isActive
+        ...payload
       }
     default:
       return state;

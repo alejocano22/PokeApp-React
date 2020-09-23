@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { closeComparisonPokemonModal } from '../../redux/actions/pokemonComparisonActions';
-import { isNotComparing } from '../../redux/actions/pokemonCardActions';
+import { showComparisonPokemonModal } from '../../redux/actions/pokemonComparisonActions';
+import { isComparing } from '../../redux/actions/pokemonCardActions';
 import { pokemonImagesUrl, getGender } from '../../utils';
 import Chart from '../Chart';
 import styles from './pokemonComparison.module.css';
@@ -9,8 +9,8 @@ import styles from './pokemonComparison.module.css';
 const PokemonComparison = (props) =>{
 
   const handleCloseModal = () => {
-    props.closeComparisonPokemonModal();
-    props.isNotComparing();
+    props.showComparisonPokemonModal(false);
+    props.isComparing(false);
   }
 
   const handlePropagation = (event) => {
@@ -80,8 +80,8 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    closeComparisonPokemonModal: () => dispatch(closeComparisonPokemonModal()),
-    isNotComparing: () => dispatch(isNotComparing()),
+    showComparisonPokemonModal: (active) => dispatch(showComparisonPokemonModal(active)),
+    isComparing: (compare) => dispatch(isComparing(compare)),
   }
 }
 

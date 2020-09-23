@@ -5,8 +5,7 @@ export const FETCH_COMPARISON_POKEMON_ERROR = 'FETCH_COMPARISON_POKEMON_ERROR';
 export const FETCH_COMPARISON_SPECIES_REQUEST = 'FETCH_COMPARISON_SPECIES_REQUEST';
 export const FETCH_COMPARISON_SPECIES_SUCCESS = 'FETCH_COMPARISON_SPECIES_SUCCESS';
 export const FETCH_COMPARISON_SPECIES_ERROR = 'FETCH_COMPARISON_SPECIES_ERROR';
-export const OPEN_COMPARISON_POKEMON_MODAL = 'OPEN_COMPARISON_POKEMON_MODAL';
-export const CLOSE_COMPARISON_POKEMON_MODAL = 'CLOSE_COMPARISON_POKEMON_MODAL';
+export const SHOW_COMPARISON_POKEMON_MODAL = 'SHOW_COMPARISON_POKEMON_MODAL';
 
 export const fetchComparisonPokemon = (url) => async (dispatch) => {
   dispatch({
@@ -48,20 +47,11 @@ export const fetchComparisonSpecies = (url) => async (dispatch) => {
   }
 }
 
-export const openComparisonPokemonModal = () => (dispatch) =>{
+export const showComparisonPokemonModal = (active) => (dispatch) =>{
   dispatch({
-    type: OPEN_COMPARISON_POKEMON_MODAL,
+    type: SHOW_COMPARISON_POKEMON_MODAL,
     payload: {
-      comparison: true
-    }
-  })
-}
-
-export const closeComparisonPokemonModal = () => (dispatch) =>{
-  dispatch({
-    type: CLOSE_COMPARISON_POKEMON_MODAL,
-    payload: {
-      comparison: false
+      isActive: active
     }
   })
 }

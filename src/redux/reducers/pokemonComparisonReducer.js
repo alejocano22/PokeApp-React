@@ -1,6 +1,6 @@
 import { FETCH_COMPARISON_POKEMON_REQUEST, FETCH_COMPARISON_POKEMON_SUCCESS, FETCH_COMPARISON_POKEMON_ERROR, 
   FETCH_COMPARISON_SPECIES_REQUEST, FETCH_COMPARISON_SPECIES_SUCCESS, FETCH_COMPARISON_SPECIES_ERROR,
-  OPEN_COMPARISON_POKEMON_MODAL, CLOSE_COMPARISON_POKEMON_MODAL } from '../actions/pokemonComparisonActions';
+  SHOW_COMPARISON_POKEMON_MODAL } from '../actions/pokemonComparisonActions';
 
 const initialState = {
   id: 0,
@@ -28,19 +28,13 @@ function pokemonComparisonReducer (state = initialState, { type, payload }){
     case FETCH_COMPARISON_POKEMON_SUCCESS:
       return {
         ...state,
-        id: payload.id,
-        name: payload.name,
-        height: payload.height,
-        weight: payload.weight,
-        types: payload.types,
-        abilities: payload.abilities,
-        stats: payload.stats
+        ...payload
       }
     case FETCH_COMPARISON_POKEMON_ERROR:
       return {
         ...state,
         isFechingPokemon: false,
-        error: payload.error
+        ...payload
       }
     case FETCH_COMPARISON_SPECIES_REQUEST:
       return {
@@ -51,24 +45,18 @@ function pokemonComparisonReducer (state = initialState, { type, payload }){
       return {
         ...state,
         isFechingSpecies: false,
-        description: payload.description,
-        genderRate: payload.genderRate        
+        ...payload       
       }
     case FETCH_COMPARISON_SPECIES_ERROR:
       return {
         ...state,
         isFechingSpecies: false,
-        error: payload.error
+        ...payload
       }
-    case OPEN_COMPARISON_POKEMON_MODAL:
+    case SHOW_COMPARISON_POKEMON_MODAL:
       return {
         ...state,
-        isActive: payload.comparison
-      }
-    case CLOSE_COMPARISON_POKEMON_MODAL:
-      return {
-        ...state,
-        isActive: payload.comparison
+        ...payload
       }
     default:
       return state;

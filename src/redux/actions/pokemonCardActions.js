@@ -5,10 +5,8 @@ export const FETCH_CURRENT_POKEMON_ERROR = 'FETCH_CURRENT_POKEMON_ERROR';
 export const FETCH_CURRENT_SPECIES_REQUEST = 'FETCH_CURRENT_SPECIES_REQUEST';
 export const FETCH_CURRENT_SPECIES_SUCCESS = 'FETCH_CURRENT_SPECIES_SUCCESS';
 export const FETCH_CURRENT_SPECIES_ERROR = 'FETCH_CURRENT_SPECIES_ERROR';
-export const OPEN_CURRENT_POKEMON_MODAL = 'OPEN_CURRENT_POKEMON_MODAL';
-export const CLOSE_CURRENT_POKEMON_MODAL = 'CLOSE_CURRENT_POKEMON_MODAL';
+export const SHOW_CURRENT_POKEMON_MODAL = 'SHOW_CURRENT_POKEMON_MODAL';
 export const IS_COMPARING = 'IS_COMPARING';
-export const IS_NOT_COMPARING = 'IS_NOT_COMPARING';
 
 export const fetchCurrentPokemon = (url) => async (dispatch) => {
   dispatch({
@@ -50,38 +48,20 @@ export const fetchCurrentSpecies = (url) => async (dispatch) => {
   }
 }
 
-export const openCurrentPokemonModal = () => (dispatch) =>{
+export const showCurrentPokemonModal = (active) => (dispatch) =>{
   dispatch({
-    type: OPEN_CURRENT_POKEMON_MODAL,
+    type: SHOW_CURRENT_POKEMON_MODAL,
     payload: {
-      isActive: true
+      isActive: active
     }
   })
 }
 
-export const closeCurrentPokemonModal = () => (dispatch) =>{
-  dispatch({
-    type: CLOSE_CURRENT_POKEMON_MODAL,
-    payload: {
-      isActive: false
-    }
-  })
-}
-
-export const isComparing = () => (dispatch) =>{
+export const isComparing = (compare) => (dispatch) =>{
   dispatch({
     type: IS_COMPARING,
     payload: {
-      isComparing: true
-    }
-  })
-}
-
-export const isNotComparing = () => (dispatch) =>{
-  dispatch({
-    type: IS_NOT_COMPARING,
-    payload: {
-      isComparing: false
+      isComparing: compare
     }
   })
 }

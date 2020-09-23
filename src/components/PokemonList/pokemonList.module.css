@@ -16,7 +16,7 @@
 .list-title {
   margin: 2rem;
   font-size: 3rem;
-  -webkit-text-stroke: 1px black;
+  -webkit-text-stroke: 1px var(--pokemon-black);
   color: var(--pokemon-red);
   text-align: center;
 }

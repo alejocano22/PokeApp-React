@@ -5,12 +5,12 @@ const initialState = {
   showMobileItems: false,
 }
 
-function headerReducer(state = initialState, action){
-  switch(action.type){
+function headerReducer(state = initialState, { type, payload }){
+  switch(type){
     case SEARCH:
       return {
         ...state,
-        search: action.payload.search
+        ...payload
       }
     case HANDLE_MOBILE_ITEMS:
       return {

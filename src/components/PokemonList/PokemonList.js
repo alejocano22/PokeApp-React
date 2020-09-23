@@ -2,8 +2,8 @@ import React from 'react';
 import { connect } from 'react-redux';
 import InfiniteScroll from 'react-infinite-scroll-component';
 import { fetchPokemonList } from '../../redux/actions/pokemonListActions';
-import { fetchCurrentPokemon, fetchCurrentSpecies, openCurrentPokemonModal } from '../../redux/actions/pokemonCardActions';
-import { fetchComparisonPokemon, fetchComparisonSpecies, openComparisonPokemonModal } from '../../redux/actions/pokemonComparisonActions';
+import { fetchCurrentPokemon, fetchCurrentSpecies, showCurrentPokemonModal } from '../../redux/actions/pokemonCardActions';
+import { fetchComparisonPokemon, fetchComparisonSpecies, showComparisonPokemonModal } from '../../redux/actions/pokemonComparisonActions';
 import { pokemonImagesUrl, speciesApiUrl } from '../../utils'
 import Header from '../Header';
 import PokemonCard from '../PokemonCard';
@@ -23,11 +23,11 @@ const PokemonList = (props) =>{
     if(!props.currentPokemon.isComparing){
       props.fetchCurrentPokemon(url);
       props.fetchCurrentSpecies(speciesApiUrl+name)
-      props.openCurrentPokemonModal();
+      props.showCurrentPokemonModal(true);
     }else{
       props.fetchComparisonPokemon(url);
       props.fetchComparisonSpecies(speciesApiUrl+name);
-      props.openComparisonPokemonModal();
+      props.showComparisonPokemonModal(true);
     }
   }
 
@@ -76,10 +76,10 @@ const mapDispatchToProps = (dispatch) => {
     fetchPokemonList: (url) => dispatch(fetchPokemonList(url)),
     fetchCurrentPokemon: (url) => dispatch(fetchCurrentPokemon(url)),
     fetchCurrentSpecies: (url) => dispatch(fetchCurrentSpecies(url)),
-    openCurrentPokemonModal: () => dispatch(openCurrentPokemonModal()),
+    showCurrentPokemonModal: (active) => dispatch(showCurrentPokemonModal(active)),
     fetchComparisonPokemon: (url) => dispatch(fetchComparisonPokemon(url)),
     fetchComparisonSpecies: (url) => dispatch(fetchComparisonSpecies(url)),
-    openComparisonPokemonModal: () => dispatch(openComparisonPokemonModal()),
+    showComparisonPokemonModal: (active) => dispatch(showComparisonPokemonModal(active)),
   }
 }
 

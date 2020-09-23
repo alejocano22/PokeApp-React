@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { closeCurrentPokemonModal, isComparing } from '../../redux/actions/pokemonCardActions';
+import { showCurrentPokemonModal, isComparing } from '../../redux/actions/pokemonCardActions';
 import { pokemonImagesUrl, getGender } from '../../utils';
 import Chart from '../Chart';
 import styles from './pokemonCard.module.css';
@@ -8,12 +8,12 @@ import styles from './pokemonCard.module.css';
 const PokemonCard = (props) =>{
 
   const handleCloseModal = () => {
-    props.closeCurrentPokemonModal();
+    props.showCurrentPokemonModal(false);
   }
   
   const comparePokemon = () => {
-    props.isComparing();
-    props.closeCurrentPokemonModal();
+    props.isComparing(true);
+    props.showCurrentPokemonModal(false);
   }
 
   const handlePropagation = (event) => {
@@ -89,8 +89,8 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    closeCurrentPokemonModal: () => dispatch(closeCurrentPokemonModal()),
-    isComparing: () => dispatch(isComparing()),
+    showCurrentPokemonModal: (active) => dispatch(showCurrentPokemonModal(active)),
+    isComparing: (compare) => dispatch(isComparing(compare)),
   }
 }
 
