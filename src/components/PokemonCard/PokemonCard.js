@@ -90,7 +90,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     closeCurrentPokemonModal: () => dispatch(closeCurrentPokemonModal()),
-    isComparing: () => dispatch(isComparing())
+    isComparing: () => dispatch(isComparing()),
   }
 }
 

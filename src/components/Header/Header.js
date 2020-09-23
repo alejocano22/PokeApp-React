@@ -73,7 +73,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     updateSearch: (search) => dispatch(updateSearch(search)),
-    handleMobileItems: () => dispatch(handleMobileItems())
+    handleMobileItems: () => dispatch(handleMobileItems()),
   }
 }
 

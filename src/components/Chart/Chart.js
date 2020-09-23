@@ -3,8 +3,8 @@ import { connect } from 'react-redux';
 import { Bar } from 'react-chartjs-2';
 import styles from './chart.module.css';
 
-const Chart2 = (props) =>{
-  let comparisonPokemonData = {
+const Chart = (props) =>{
+  const comparisonPokemonData = {
     label: props.comparisonPokemon.name,
     data: props.comparisonPokemon.stats.map(({base_stat}) => (base_stat)),
     backgroundColor:[
@@ -73,7 +73,7 @@ const Chart2 = (props) =>{
         data={data}
         options={options}
         datasetKeyProvider={()=>(Math.random())}
-      /> 
+      />
     </div>
   )
 }
@@ -82,4 +82,4 @@ const mapStateToProps = (state) => {
   return state;
 }
 
-export default connect(mapStateToProps)(Chart2);
+export default connect(mapStateToProps)(Chart);

@@ -12,6 +12,6 @@ export const updateSearch = (search) => {
 
 export const handleMobileItems = (search) => {
   return {
-    type: HANDLE_MOBILE_ITEMS,
+    type: HANDLE_MOBILE_ITEMS
   }
 }

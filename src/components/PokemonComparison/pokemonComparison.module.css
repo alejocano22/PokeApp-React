@@ -13,7 +13,7 @@
   position: relative;
   display: grid;
   grid-template-rows: 4rem 20rem 26rem;
-  background: white;
+  background: var(--pokemon-white);
   border-radius: 5px;
   box-shadow: 2px 2px 2px 2px var(--pokemon-gray);
   width: 80%;
@@ -47,7 +47,7 @@
 .pokemon-name {
   width: 100%;
   text-align: center;
-  color: white;
+  color: var(--pokemon-white);
   margin: 1rem;
   font-size: 2rem;
 }

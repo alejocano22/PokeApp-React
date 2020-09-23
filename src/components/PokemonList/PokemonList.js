@@ -1,21 +1,23 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
 import InfiniteScroll from 'react-infinite-scroll-component';
-import store from '../../redux/store';
 import { fetchPokemonList } from '../../redux/actions/pokemonListActions';
 import { fetchCurrentPokemon, fetchCurrentSpecies, openCurrentPokemonModal } from '../../redux/actions/pokemonCardActions';
 import { fetchComparisonPokemon, fetchComparisonSpecies, openComparisonPokemonModal } from '../../redux/actions/pokemonComparisonActions';
-import { pokemonImagesUrl, pokemonApiUrl, speciesApiUrl } from '../../utils'
+import { pokemonImagesUrl, speciesApiUrl } from '../../utils'
 import Header from '../Header';
 import PokemonCard from '../PokemonCard';
 import PokemonComparison from '../PokemonComparison';
 import PokemonComparisonBox from '../PokemonComparison/PokemonComparisonBox';
 import styles from './pokemonList.module.css';
 
-const PokemonList = (props) =>{  
-  useEffect(()=>{
-    store.dispatch(fetchPokemonList(pokemonApiUrl))
-  },[])
+let isEmpty = true;
+
+const PokemonList = (props) =>{ 
+
+  const getPokemonList = (() =>{
+    props.fetchPokemonList(props.pokemonList.next); 
+  })
 
   const clickOnPokemon = (url, name) => {
     if(!props.currentPokemon.isComparing){
@@ -29,10 +31,11 @@ const PokemonList = (props) =>{
     }
   }
 
-  const getPokemonList = (() =>{
-    props.fetchPokemonList(props.pokemonList.next) 
-  })
-  
+  if(isEmpty){
+    getPokemonList();
+    isEmpty = false;
+  }
+
   return(  
     <div>
       <PokemonCard/>

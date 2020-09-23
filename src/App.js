@@ -1,10 +1,10 @@
 import React from 'react';
 import { Provider } from 'react-redux';
-import { BrowserRouter, Route, Switch } from 'react-router-dom'
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import store from './redux/store';
-import Welcome from './components/Welcome'
-import PokemonList from './components/PokemonList'
-import PageNotFound from './components/PageNotFound'
+import Welcome from './components/Welcome';
+import PokemonList from './components/PokemonList';
+import PageNotFound from './components/PageNotFound';
 
 const App = () => (
   <Provider store={store}>

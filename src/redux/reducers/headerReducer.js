@@ -1,4 +1,4 @@
-import { SEARCH, HANDLE_MOBILE_ITEMS } from '../actions/headerAction'
+import { SEARCH, HANDLE_MOBILE_ITEMS } from '../actions/headerAction';
 
 const initialState = {
   search: '',

@@ -1,4 +1,4 @@
-import { fetchPokemon, fetchSpecies } from '../../utils'
+import { fetchPokemon, fetchSpecies } from '../../utils';
 export const FETCH_COMPARISON_POKEMON_REQUEST = 'FETCH_COMPARISON_POKEMON_REQUEST';
 export const FETCH_COMPARISON_POKEMON_SUCCESS = 'FETCH_COMPARISON_POKEMON_SUCCESS';
 export const FETCH_COMPARISON_POKEMON_ERROR = 'FETCH_COMPARISON_POKEMON_ERROR';
