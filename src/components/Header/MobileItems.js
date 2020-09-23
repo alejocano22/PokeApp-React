@@ -6,7 +6,7 @@ import styles from './header.module.css';
 const MobileItems = ({ header }) =>{
   if(header.showMobileItems){
     return(
-      <div className={styles['mobile-nav']}>
+      <div className={styles['mobile-nav-bar']}>
         <NavLink to='/' className={styles['link']} activeClassName={styles['active-link']} exact>PokéApp</NavLink>
         <NavLink to='/pokemon' className={styles['link']} activeClassName={styles['active-link']}>Pokémon</NavLink>
       </div>

@@ -23,8 +23,8 @@ const Header = ({updateSearch, hiddenSearch, handleMobileItems}) =>{
 
   return(
     <div className={styles['main-header']}>
-      <nav className={styles['header']}>
-        <div className={styles['nav-bar']}>
+      <nav className={styles['nav-bar']}>
+        <div className={styles['nav-items']}>
           <NavLink to='/' className={styles['home-link']} activeClassName={styles['active-link']} exact>
             <img
               className={styles['logo']}
@@ -34,32 +34,23 @@ const Header = ({updateSearch, hiddenSearch, handleMobileItems}) =>{
             PokéApp
           </NavLink>
           <NavLink to='/pokemon' className={styles['link']} activeClassName={styles['active-link']}>Pokémon</NavLink>
-          <form className={styles['search-form']} onSubmit={prevent}>
-            <input
-              className={styles['search']}
-              type='text'
-              placeholder='search'
-              hidden={hiddenSearch}
-              onChange={handleOnChange}
-            ></input>
-          </form>
         </div>
-        <div className={styles['mobile-bar']}>
-          <button className={styles["burguer-button"]} onClick={showMobileItems}>
-            <span className={styles["burguer-button-bar"]}></span>
-            <span className={styles["burguer-button-bar"]}></span>
-            <span className={styles["burguer-button-bar"]}></span>
-          </button>
-          <form className={styles['search-form']} onSubmit={prevent}>
-            <input
-              className={styles['search']}
-              type='text'
-              placeholder='search'
-              hidden={hiddenSearch}
-              onChange={handleOnChange}
-            ></input>
-          </form>
+        <div className={styles["mobile-button"]}>
+        <button className={styles["burguer-button"]} onClick={showMobileItems}>
+          <span className={styles["burguer-button-bar"]}></span>
+          <span className={styles["burguer-button-bar"]}></span>
+          <span className={styles["burguer-button-bar"]}></span>
+        </button>
         </div>
+        <form className={styles['search-form']} onSubmit={prevent}>
+          <input
+            className={styles['search']}
+            type='text'
+            placeholder='search'
+            hidden={hiddenSearch}
+            onChange={handleOnChange}
+          ></input>
+        </form>
       </nav>
       <MobileItems/>
     </div>

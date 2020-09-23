@@ -17,7 +17,6 @@ function pokemonListReducer (state = initialState, { type, payload }){
         isFeching: true,
       }
     case FETCH_LIST_SUCCESS:
-      console.log(payload)
       return {
         ...state,
         isFeching: false,
