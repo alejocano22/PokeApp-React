@@ -84,6 +84,7 @@
 .card-image {
   width: 100%;
   max-width: 15rem;
+  image-rendering: pixelated;
 }
 
 .pokemon-description {

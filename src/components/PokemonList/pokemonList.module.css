@@ -41,8 +41,9 @@
   box-shadow: 2px 2px 2px 2px var(--pokemon-gray);
 }
 
-.pokemon img {
+.pokemon-image {
   width: 8rem;
+  image-rendering: pixelated;
 }
 
 .pokemon-name {

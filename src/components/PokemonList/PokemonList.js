@@ -55,7 +55,8 @@ const PokemonList = (props) =>{
               <li key={index} className={styles['pokemon-item']} onClick={()=>(clickOnPokemon(pokemon.url, pokemon.name))}>
                 <img
                   src= {pokemonImagesUrl+(props.pokemonList.pokemonList.indexOf(pokemon)+1)+".png?raw=true"}
-                  alt={pokemon.name}>
+                  alt={pokemon.name}
+                  className={styles['pokemon-image']}>
                 </img>
                 <h2 className={styles['pokemon-name']}>{pokemon.name.toUpperCase()}</h2>
               </li>
