@@ -7,6 +7,11 @@ import Chart from '../Chart';
 import styles from './pokemonComparison.module.css';
 
 const PokemonComparison = (props) =>{
+  const { currentPokemonIndex, comparisonPokemonIndex } = props.pokemonList;
+  const currentPokemon = props.pokemonList.pokemonFetched[currentPokemonIndex];
+  const currentSpecies = props.pokemonList.speciesFetched[currentPokemonIndex];
+  const comparisonPokemon = props.pokemonList.pokemonFetched[comparisonPokemonIndex];
+  const comparisonSpecies = props.pokemonList.speciesFetched[comparisonPokemonIndex];
 
   const handleCloseModal = () => {
     props.showComparisonPokemonModal(false);
@@ -17,47 +22,47 @@ const PokemonComparison = (props) =>{
     event.stopPropagation();
   }
 
-  if(props.comparisonPokemon.isActive){
-    const CurrentPokemonGender = getGender(props.currentPokemon.genderRate);
-    const ComparisonPokemonGender = getGender(props.comparisonPokemon.genderRate);
+  if (props.comparisonPokemon.isActive && currentPokemon  && comparisonPokemon && currentSpecies && comparisonSpecies) {
+    const CurrentPokemonGender = getGender(currentPokemon.genderRate);
+    const ComparisonPokemonGender = getGender(comparisonPokemon.genderRate);
     return(  
       <div className={styles['comparison-modal']} onClick={handleCloseModal}>
         <div className={styles['comparison-card']} onClick={handlePropagation}>
           <div className={styles['pokemon-header']}>
             <button className={styles['close-button']}onClick={handleCloseModal}>X</button>
-            <h2 className={styles['pokemon-name']}>{props.currentPokemon.name.toUpperCase()} vs. {props.comparisonPokemon.name.toUpperCase()}</h2>
+            <h2 className={styles['pokemon-name']}>{currentPokemon.name.toUpperCase()} vs. {comparisonPokemon.name.toUpperCase()}</h2>
           </div>
           <div className={styles['pokemon-information']}>
             <div className={styles['pokemon-images']}>
               <img
                 className={styles['card-image']}
-                src= {pokemonImagesUrl+(props.currentPokemon.id)+".png?raw=true"}
-                alt={props.currentPokemon.id}>
+                src= {pokemonImagesUrl+(currentPokemon.id)+".png?raw=true"}
+                alt={currentPokemon.id}>
               </img> 
               <img
                 className={styles['card-image']}
-                src= {pokemonImagesUrl+(props.comparisonPokemon.id)+".png?raw=true"}
-                alt={props.currentPokemon.id}>
+                src= {pokemonImagesUrl+(comparisonPokemon.id)+".png?raw=true"}
+                alt={currentPokemon.id}>
               </img>
             </div>
             <div className={styles['pokemon-details']}>
               <h4 className={styles['pokemon-detail-description']}>{CurrentPokemonGender}</h4>
               <h3 className={styles['pokemon-detail-title']}>Gender</h3>
               <h4 className={styles['pokemon-detail-description']}>{ComparisonPokemonGender}</h4>
-              <h4 className={styles['pokemon-detail-description']}>{props.currentPokemon.height}</h4>
+              <h4 className={styles['pokemon-detail-description']}>{currentPokemon.height}</h4>
               <h3 className={styles['pokemon-detail-title']}>Height</h3>
-              <h4 className={styles['pokemon-detail-description']}>{props.comparisonPokemon.height}</h4>  
-              <h4 className={styles['pokemon-detail-description']}>{props.currentPokemon.weight}</h4>
+              <h4 className={styles['pokemon-detail-description']}>{comparisonPokemon.height}</h4>  
+              <h4 className={styles['pokemon-detail-description']}>{currentPokemon.weight}</h4>
               <h3 className={styles['pokemon-detail-title']}>Weight</h3>
-              <h4 className={styles['pokemon-detail-description']}>{props.comparisonPokemon.weight}</h4>
+              <h4 className={styles['pokemon-detail-description']}>{comparisonPokemon.weight}</h4>
               <ul className={styles['pokemon-detail-list']}> 
-                {props.currentPokemon.abilities.map((ability, index)=>(
+                {currentPokemon.abilities.map((ability, index)=>(
                   <li className={styles['pokemon-detail-description']} key={index}>{ability.ability.name}</li>
                 ))}
               </ul>
               <h3 className={styles['pokemon-detail-title']}>Abilities</h3>
               <ul className={styles['pokemon-detail-list']}> 
-                {props.comparisonPokemon.abilities.map((ability, index)=>(
+                {comparisonPokemon.abilities.map((ability, index)=>(
                   <li className={styles['pokemon-detail-description']} key={index}>{ability.ability.name}</li>
                 ))}
               </ul>   
