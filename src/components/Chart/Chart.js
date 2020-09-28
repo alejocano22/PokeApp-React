@@ -3,14 +3,14 @@ import { connect } from 'react-redux';
 import { Bar } from 'react-chartjs-2';
 import styles from './chart.module.css';
 
-const Chart = (props) =>{
+const Chart = (props) => {
   const { currentPokemonIndex, comparisonPokemonIndex } = props.pokemonList;
   const currentPokemon = props.pokemonList.pokemonFetched[currentPokemonIndex];
   const comparisonPokemon = props.pokemonList.pokemonFetched[comparisonPokemonIndex];
 
   const comparisonPokemonData = {
     label: comparisonPokemon.name,
-    data: comparisonPokemon.stats.map(({base_stat}) => (base_stat)),
+    data: comparisonPokemon.stats.map(({ base_stat }) => (base_stat)),
     backgroundColor:[
       '#b3a125',
       '#b3a125',
@@ -24,11 +24,11 @@ const Chart = (props) =>{
   }
 
   const data = {
-    labels: currentPokemon.stats.map(({stat}) => (stat.name)),
+    labels: currentPokemon.stats.map(({ stat }) => (stat.name)),
     datasets: [
       {
         label: currentPokemon.name,
-        data: currentPokemon.stats.map(({base_stat}) => (base_stat)),
+        data: currentPokemon.stats.map(({ base_stat }) => (base_stat)),
         backgroundColor:[
           '#cc0000',
           '#cc0000',
@@ -72,11 +72,11 @@ const Chart = (props) =>{
     }
   }
   return(
-    <div className={styles['chart']}>
+    <div className={ styles['chart'] }>
       <Bar
-        data={data}
-        options={options}
-        datasetKeyProvider={()=>(Math.random())}
+        data={ data }
+        options={ options }
+        datasetKeyProvider={ () => (Math.random()) }
       />
     </div>
   )

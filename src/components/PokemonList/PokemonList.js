@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import InfiniteScroll from 'react-infinite-scroll-component';
-import { fetchPokemonList, savePokemon, saveSpecies, updateCurrentPokemonIndex, updateComparisonPokemonIndex  } from '../../redux/actions/pokemonListActions';
+import { fetchPokemonList, savePokemon, saveSpecies, updateCurrentPokemonIndex, updateComparisonPokemonIndex } from '../../redux/actions/pokemonListActions';
 import { showCurrentPokemonModal} from '../../redux/actions/pokemonCardActions';
 import { showComparisonPokemonModal } from '../../redux/actions/pokemonComparisonActions';
 import { pokemonImagesUrl, speciesApiUrl } from '../../utils'
@@ -18,7 +18,7 @@ const PokemonList = (props) => {
     props.fetchPokemonList(props.pokemonList.next); 
   })
 
-  const searchIndexInPokemonFetched = (name) => (props.pokemonList.pokemonFetched.findIndex((pokemon) => (pokemon.name === name)))
+  const searchIndexInPokemonFetched = (name) => (props.pokemonList.pokemonFetched.findIndex((pokemon) => (pokemon.name === name)));
 
   const clickOnPokemon = (url, name) => {
     let indexPokeFetched = searchIndexInPokemonFetched(name);
@@ -45,25 +45,25 @@ const PokemonList = (props) => {
     <div>
       <PokemonCard/>
       <PokemonComparison/>
-      <Header hiddenSearch = { false }/>
+      <Header hiddenSearch={ false }/>
       <PokemonComparisonBox/>
       <InfiniteScroll
-        dataLength = { props.pokemonList.pokemonList.length }
-        next = { getPokemonList }
-        hasMore = { true }
-        className = { styles['scroll']} 
+        dataLength={ props.pokemonList.pokemonList.length }
+        next={ getPokemonList }
+        hasMore={ true }
+        className={ styles['scroll'] } 
       >
-        <div className = { styles['pokemon'] }>
-          <h1 className = {styles['list-title'] }>List of Pokémon</h1>
-          <ul className = { styles['pokemon-list'] }>
-            { props.pokemonList.pokemonList.filter(poke => poke.name.includes(props.header.search)).map((pokemon, index) =>(
-              <li key = { index } className = { styles['pokemon-item'] } onClick={ () => (clickOnPokemon(pokemon.url, pokemon.name)) }>
+        <div className={ styles['pokemon'] }>
+          <h1 className={styles['list-title'] }>List of Pokémon</h1>
+          <ul className={ styles['pokemon-list'] }>
+            { props.pokemonList.pokemonList.filter(pokeFilter => pokeFilter.name.includes(props.header.search)).map((pokemon, index) => (
+              <li key={ index } className={ styles['pokemon-item'] } onClick={ () => (clickOnPokemon(pokemon.url, pokemon.name)) }>
                 <img
-                  src = { pokemonImagesUrl + (props.pokemonList.pokemonList.indexOf(pokemon)+1) + ".png?raw=true" }
-                  alt = { pokemon.name }
-                  className = { styles['pokemon-image'] }>
+                  src={ pokemonImagesUrl + (props.pokemonList.pokemonList.indexOf(pokemon) + 1) + ".png?raw=true" }
+                  alt={ pokemon.name }
+                  className={ styles['pokemon-image'] }>
                 </img>
-                <h2 className = { styles['pokemon-name'] }>{ pokemon.name.toUpperCase() }</h2>
+                <h2 className={ styles['pokemon-name'] }>{ pokemon.name.toUpperCase() }</h2>
               </li>
             )) }
           </ul>  

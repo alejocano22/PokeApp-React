@@ -6,7 +6,7 @@ const initialState = {
 }
 
 function headerReducer(state = initialState, { type, payload }){
-  switch(type){
+  switch (type) {
     case SEARCH:
       return {
         ...state,

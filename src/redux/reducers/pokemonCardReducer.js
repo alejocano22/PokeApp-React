@@ -6,7 +6,7 @@ const initialState = {
 }
 
 function pokemonReducer (state = initialState, { type, payload }){
-  switch(type){
+  switch (type) {
     case IS_COMPARING:
       return {
         ...state,

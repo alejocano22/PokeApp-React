@@ -6,9 +6,9 @@ import MobileItems from './MobileItems';
 import pokeIcon from '../../images/pokeIcon.png';
 import styles from './header.module.css';
 
-const Header = ({updateSearch, hiddenSearch, handleMobileItems}) =>{
+const Header = ({ updateSearch, hiddenSearch, handleMobileItems }) => {
 
-  const handleOnChange = (event) =>{
+  const handleOnChange = (event) => {
     const pokemonName = event.target.value;
     updateSearch(pokemonName);
   }
@@ -22,33 +22,33 @@ const Header = ({updateSearch, hiddenSearch, handleMobileItems}) =>{
   }
 
   return(
-    <div className={styles['main-header']}>
-      <nav className={styles['nav-bar']}>
-        <div className={styles['nav-items']}>
-          <NavLink to='/' className={styles['home-link']} activeClassName={styles['active-link']} exact>
+    <div className={ styles['main-header'] }>
+      <nav className={ styles['nav-bar'] }>
+        <div className={ styles['nav-items'] }>
+          <NavLink to='/' className={ styles['home-link'] } activeClassName={ styles['active-link'] } exact>
             <img
-              className={styles['logo']}
-              src={pokeIcon}
+              className={ styles['logo'] }
+              src={ pokeIcon }
               alt="poke ball"
             ></img>
             PokéApp
           </NavLink>
-          <NavLink to='/pokemon' className={styles['link']} activeClassName={styles['active-link']}>Pokémon</NavLink>
+          <NavLink to='/pokemon' className={ styles['link'] } activeClassName={ styles['active-link'] }>Pokémon</NavLink>
         </div>
-        <div className={styles["mobile-button"]}>
-        <button className={styles["burguer-button"]} onClick={showMobileItems}>
-          <span className={styles["burguer-button-bar"]}></span>
-          <span className={styles["burguer-button-bar"]}></span>
-          <span className={styles["burguer-button-bar"]}></span>
+        <div className={ styles["mobile-button"] }>
+        <button className={ styles["burguer-button"] } onClick={ showMobileItems }>
+          <span className={ styles["burguer-button-bar"] }></span>
+          <span className={ styles["burguer-button-bar"] }></span>
+          <span className={ styles["burguer-button-bar"] }></span>
         </button>
         </div>
-        <form className={styles['search-form']} onSubmit={prevent}>
+        <form className={ styles['search-form'] } onSubmit={ prevent }>
           <input
-            className={styles['search']}
+            className={ styles['search'] }
             type='text'
             placeholder='search'
-            hidden={hiddenSearch}
-            onChange={handleOnChange}
+            hidden={ hiddenSearch }
+            onChange={ handleOnChange }
           ></input>
         </form>
       </nav>

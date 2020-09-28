@@ -5,7 +5,7 @@ const initialState = {
 }
 
 function pokemonComparisonReducer (state = initialState, { type, payload }){
-  switch(type){
+  switch (type) {
     case SHOW_COMPARISON_POKEMON_MODAL:
       return {
         ...state,

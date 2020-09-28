@@ -19,7 +19,7 @@ const initialState = {
 }
 
 function pokemonListReducer (state = initialState, { type, payload }){
-  switch(type){
+  switch (type) {
     case FETCH_LIST_REQUEST:
       return {
         ...state,

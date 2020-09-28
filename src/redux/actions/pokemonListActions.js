@@ -78,7 +78,7 @@ export const saveSpecies = (url) => async (dispatch) => {
   }
 }
 
-export const updateCurrentPokemonIndex = (index) => (dispatch) =>{
+export const updateCurrentPokemonIndex = (index) => (dispatch) => {
   dispatch({
     type: UPDATE_POKEMON_INDEX,
     payload: {
@@ -87,7 +87,7 @@ export const updateCurrentPokemonIndex = (index) => (dispatch) =>{
   })
 }
 
-export const updateComparisonPokemonIndex = (index) => (dispatch) =>{
+export const updateComparisonPokemonIndex = (index) => (dispatch) => {
   dispatch({
     type: UPDATE_POKEMON_INDEX,
     payload: {

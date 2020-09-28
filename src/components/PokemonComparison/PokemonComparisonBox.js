@@ -9,9 +9,9 @@ const PokemonComparisonBox = (props) => {
   if (props.currentPokemon.isComparing && currentPokemon) {
     const name = currentPokemon.name;
     return(  
-      <div className = { styles['compare-pokemon-box'] }>
-        <h3 className = { styles['compare-pokemon-box-title'] } >Comparing pokemon...</h3>
-        <h4 className = { styles['compare-pokemon'] }>{ name.toUpperCase() }</h4>
+      <div className={ styles['compare-pokemon-box'] }>
+        <h3 className={ styles['compare-pokemon-box-title'] }>Comparing pokemon...</h3>
+        <h4 className={ styles['compare-pokemon'] }>{ name.toUpperCase() }</h4>
       </div>
     )
   } else {

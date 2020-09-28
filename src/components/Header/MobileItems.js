@@ -3,15 +3,15 @@ import { connect } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import styles from './header.module.css';
 
-const MobileItems = ({ header }) =>{
-  if(header.showMobileItems){
+const MobileItems = ({ header }) => {
+  if (header.showMobileItems) {
     return(
-      <div className={styles['mobile-nav-bar']}>
-        <NavLink to='/' className={styles['link']} activeClassName={styles['active-link']} exact>PokéApp</NavLink>
-        <NavLink to='/pokemon' className={styles['link']} activeClassName={styles['active-link']}>Pokémon</NavLink>
+      <div className={ styles['mobile-nav-bar'] }>
+        <NavLink exact to='/' className={ styles['link'] } activeClassName={ styles['active-link'] }>PokéApp</NavLink>
+        <NavLink to='/pokemon' className={styles['link']} activeClassName={styles['active-link'] }>Pokémon</NavLink>
       </div>
     )
-  }else{
+  } else {
     return null;
   }
 }

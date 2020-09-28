@@ -7,12 +7,12 @@ import PokemonList from './components/PokemonList';
 import PageNotFound from './components/PageNotFound';
 
 const App = () => (
-  <Provider store={store}>
+  <Provider store={ store }>
     <HashRouter basename='/'>
       <Switch>
-        <Route exact path='/' component={Welcome}/>
-        <Route path='/pokemon' component={PokemonList}/>
-        <Route component={PageNotFound} />
+        <Route exact path='/' component={ Welcome }/>
+        <Route path='/pokemon' component={ PokemonList }/>
+        <Route component={ PageNotFound } />
       </Switch>
     </HashRouter>
   </Provider>
