@@ -41,18 +41,18 @@ export const savePokemon = (url) => async (dispatch) => {
   dispatch({
     type: FETCH_POKEMON_REQUEST
   })
-  const { payload } = await fetchPokemon(url);
-  if(payload.error){
-    dispatch({
-      type: FETCH_POKEMON_ERROR,
-      payload: {
-        error: payload.error
-      }
-    })
-  }else{
+  try {
+    const { payload } = await fetchPokemon(url);
     dispatch({
       type: FETCH_POKEMON_SUCCESS,
       payload: payload
+    })
+  } catch (error) {
+    dispatch({
+      type: FETCH_SPECIES_ERROR,
+      payload: {
+        error: error.toString()
+      }
     })
   }
 }
@@ -61,18 +61,19 @@ export const saveSpecies = (url) => async (dispatch) => {
   dispatch({
     type: FETCH_SPECIES_REQUEST
   })
-  const { payload } = await fetchSpecies(url);
-  if(payload.error){
-    dispatch({
-      type: FETCH_SPECIES_ERROR,
-      payload: {
-        error: payload.error
-      }
-    })
-  }else{
+
+  try {
+    const { payload } = await fetchSpecies(url);
     dispatch({
       type: FETCH_SPECIES_SUCCESS,
       payload: payload
+    })
+  } catch (error) {
+    dispatch({
+      type: FETCH_SPECIES_ERROR,
+      payload: {
+        error: error.toString()
+      }
     })
   }
 }

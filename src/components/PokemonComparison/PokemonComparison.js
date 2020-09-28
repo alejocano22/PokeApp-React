@@ -50,7 +50,7 @@ const PokemonComparison = (props) =>{
             </div>
             <div className={styles['pokemon-details']}>
               { pokemonDetailTitle.map((title, index)=>(
-                <div className={styles['pokemon-detail-item']}>
+                <div className={styles['pokemon-detail-item']} key={index}>
                   <h4 className={styles['pokemon-detail-description']}>{CurrentPokemonDetailItem[index]}</h4>
                   <h3 className={styles['pokemon-detail-title']}>{title}</h3>
                   <h4 className={styles['pokemon-detail-description']}>{ComparisonPokemonDetailItem[index]}</h4>

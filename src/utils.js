@@ -16,13 +16,9 @@ export const fetchPokemon = (url) => {
         abilities: pokemon.abilities,
         stats: pokemon.stats
       }
-    })).catch(error => (
-      {
-        payload: {
-          error: error.toString()
-        }
-      }
-    ))
+    })).catch(error => {
+      throw error;
+    })
 }
 
 export const fetchSpecies = (url) => {  
@@ -34,13 +30,9 @@ export const fetchSpecies = (url) => {
         description: pokemon.flavor_text_entries.filter(entry => entry.language.name === 'en')[0].flavor_text,
         genderRate: pokemon.gender_rate
       }
-    })).catch(error =>(
-      {
-        payload: {
-          error: error.toString()
-        }
-      }
-    ))
+    })).catch(error => {
+      throw error;
+    })
 }
 
 export const getGender = (rate) => {
