@@ -75,15 +75,21 @@
 }
 
 .pokemon-details {
-  display: grid;
-  grid-template-columns: repeat(3, auto);
-  grid-template-rows: repeat(4, auto);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   width: 60%;
   margin: 0 2rem;
 }
 
+.pokemon-detail-item {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+}
+
 .pokemon-detail-title {
-  margin: 0 auto;
+  margin: 0;
   font-size: 1rem;
   font-weight: 700;
 }
@@ -135,10 +141,10 @@
 
   .pokemon-details {
     margin: 0.5rem 0.5rem 0 0.5rem;
+    width: 90%;
   }
 
   .pokemon-detail-description {
-    margin: 0 1rem;
     font-size: 0.8rem;
   }
 

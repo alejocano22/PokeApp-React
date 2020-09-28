@@ -25,6 +25,8 @@ const PokemonCard = (props) =>{
   
   if(props.currentPokemon.isActive && currentPokemon && currentSpecies){
     const gender = getGender(currentSpecies.genderRate);
+    const pokemonDetailTitle = ['Gender', 'Height', 'Weight'];
+    const pokemonDetailItem = [gender, currentPokemon.height, currentPokemon.weight];
     return(  
       <div className={styles['pokemon-modal']} onClick={handleCloseModal}>
         <div className={styles['pokemon-card']} onClick={handlePropagation}>
@@ -42,18 +44,12 @@ const PokemonCard = (props) =>{
             <div>
               <p className={styles['pokemon-description']}>{currentSpecies.description}</p>
               <div className={styles['pokemon-details']}>
-                <div className={styles['pokemon-detail-item']}>
-                  <h3 className={styles['pokemon-detail-title']}>Gender</h3>
-                  <h4 className={styles['pokemon-detail-description']}>{gender}</h4>
+                { pokemonDetailItem.map((item, index)=>(
+                <div className={styles['pokemon-detail-item']} key={index}>
+                  <h3 className={styles['pokemon-detail-title']}>{pokemonDetailTitle[index]}</h3>
+                  <h4 className={styles['pokemon-detail-description']}>{item}</h4>
                 </div>
-                <div className={styles['pokemon-detail-item']}>
-                  <h3 className={styles['pokemon-detail-title']}>Height</h3>
-                  <h4 className={styles['pokemon-detail-description']}>{currentPokemon.height}</h4>
-                </div>
-                <div className={styles['pokemon-detail-item']}>
-                  <h3 className={styles['pokemon-detail-title']}>Weight</h3>
-                  <h4 className={styles['pokemon-detail-description']}>{currentPokemon.weight}</h4>
-                </div>
+                )) }
                 <div className={styles['pokemon-detail-item']}>
                   <h3 className={styles['pokemon-detail-title']}>Types</h3>
                   <ul className={styles['pokemon-detail-list']}> 

@@ -25,6 +25,9 @@ const PokemonComparison = (props) =>{
   if (props.comparisonPokemon.isActive && currentPokemon  && comparisonPokemon && currentSpecies && comparisonSpecies) {
     const CurrentPokemonGender = getGender(currentPokemon.genderRate);
     const ComparisonPokemonGender = getGender(comparisonPokemon.genderRate);
+    const pokemonDetailTitle = ['Gender', 'Height', 'Weight'];
+    const CurrentPokemonDetailItem = [CurrentPokemonGender, currentPokemon.height, currentPokemon.weight];
+    const ComparisonPokemonDetailItem = [ComparisonPokemonGender, comparisonPokemon.height, comparisonPokemon.weight];
     return(  
       <div className={styles['comparison-modal']} onClick={handleCloseModal}>
         <div className={styles['comparison-card']} onClick={handlePropagation}>
@@ -46,26 +49,26 @@ const PokemonComparison = (props) =>{
               </img>
             </div>
             <div className={styles['pokemon-details']}>
-              <h4 className={styles['pokemon-detail-description']}>{CurrentPokemonGender}</h4>
-              <h3 className={styles['pokemon-detail-title']}>Gender</h3>
-              <h4 className={styles['pokemon-detail-description']}>{ComparisonPokemonGender}</h4>
-              <h4 className={styles['pokemon-detail-description']}>{currentPokemon.height}</h4>
-              <h3 className={styles['pokemon-detail-title']}>Height</h3>
-              <h4 className={styles['pokemon-detail-description']}>{comparisonPokemon.height}</h4>  
-              <h4 className={styles['pokemon-detail-description']}>{currentPokemon.weight}</h4>
-              <h3 className={styles['pokemon-detail-title']}>Weight</h3>
-              <h4 className={styles['pokemon-detail-description']}>{comparisonPokemon.weight}</h4>
-              <ul className={styles['pokemon-detail-list']}> 
-                {currentPokemon.abilities.map((ability, index)=>(
-                  <li className={styles['pokemon-detail-description']} key={index}>{ability.ability.name}</li>
-                ))}
-              </ul>
-              <h3 className={styles['pokemon-detail-title']}>Abilities</h3>
-              <ul className={styles['pokemon-detail-list']}> 
-                {comparisonPokemon.abilities.map((ability, index)=>(
-                  <li className={styles['pokemon-detail-description']} key={index}>{ability.ability.name}</li>
-                ))}
-              </ul>   
+              { pokemonDetailTitle.map((title, index)=>(
+                <div className={styles['pokemon-detail-item']}>
+                  <h4 className={styles['pokemon-detail-description']}>{CurrentPokemonDetailItem[index]}</h4>
+                  <h3 className={styles['pokemon-detail-title']}>{title}</h3>
+                  <h4 className={styles['pokemon-detail-description']}>{ComparisonPokemonDetailItem[index]}</h4>
+                </div>
+              )) }
+              <div className={styles['pokemon-detail-item']}>
+                <ul className={styles['pokemon-detail-list']}> 
+                  {currentPokemon.abilities.map((ability, index)=>(
+                    <li className={styles['pokemon-detail-description']} key={index}>{ability.ability.name}</li>
+                  ))}
+                </ul>
+                <h3 className={styles['pokemon-detail-title']}>Abilities</h3>
+                <ul className={styles['pokemon-detail-list']}> 
+                  {comparisonPokemon.abilities.map((ability, index)=>(
+                    <li className={styles['pokemon-detail-description']} key={index}>{ability.ability.name}</li>
+                  ))}
+                </ul>   
+              </div>
             </div>
           </div> 
           <div className={styles['pokemon-stats']}>
