@@ -29,10 +29,10 @@ const PokemonList = (props) => {
     }
     if (props.currentPokemon.isComparing) {
       props.updateComparisonPokemonIndex(indexPokeFetched);
-      props.showComparisonPokemonModal(true);
+      props.showComparisonPokemonModal();
     } else {
       props.updateCurrentPokemonIndex(indexPokeFetched);
-      props.showCurrentPokemonModal(true);
+      props.showCurrentPokemonModal();
     }
   }
 
@@ -84,8 +84,8 @@ const mapDispatchToProps = (dispatch) => {
     saveSpecies: (url) => dispatch(saveSpecies(url)),
     updateCurrentPokemonIndex: (index) => dispatch(updateCurrentPokemonIndex(index)),
     updateComparisonPokemonIndex: (index) => dispatch(updateComparisonPokemonIndex(index)),
-    showCurrentPokemonModal: (active) => dispatch(showCurrentPokemonModal(active)),
-    showComparisonPokemonModal: (active) => dispatch(showComparisonPokemonModal(active)),
+    showCurrentPokemonModal: () => dispatch(showCurrentPokemonModal()),
+    showComparisonPokemonModal: () => dispatch(showComparisonPokemonModal()),
   }
 }
 

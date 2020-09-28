@@ -14,8 +14,8 @@ const PokemonComparison = (props) => {
   const comparisonSpecies = props.pokemonList.speciesFetched[comparisonPokemonIndex];
 
   const handleCloseModal = () => {
-    props.showComparisonPokemonModal(false);
-    props.isComparing(false);
+    props.showComparisonPokemonModal();
+    props.isComparing();
   }
 
   const handlePropagation = (event) => {
@@ -88,8 +88,8 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    showComparisonPokemonModal: (active) => dispatch(showComparisonPokemonModal(active)),
-    isComparing: (compare) => dispatch(isComparing(compare)),
+    showComparisonPokemonModal: () => dispatch(showComparisonPokemonModal()),
+    isComparing: () => dispatch(isComparing()),
   }
 }
 

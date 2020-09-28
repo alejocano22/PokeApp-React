@@ -11,12 +11,12 @@ const PokemonCard = (props) => {
   const currentSpecies = props.pokemonList.speciesFetched[currentPokemonIndex];
 
   const handleCloseModal = () => {
-    props.showCurrentPokemonModal(false);
+    props.showCurrentPokemonModal();
   }
   
   const comparePokemon = () => {
-    props.isComparing(true);
-    props.showCurrentPokemonModal(false);
+    props.isComparing();
+    props.showCurrentPokemonModal();
   }
 
   const handlePropagation = (event) => {
@@ -88,8 +88,8 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    showCurrentPokemonModal: (active) => dispatch(showCurrentPokemonModal(active)),
-    isComparing: (compare) => dispatch(isComparing(compare)),
+    showCurrentPokemonModal: () => dispatch(showCurrentPokemonModal()),
+    isComparing: () => dispatch(isComparing()),
   }
 }
 

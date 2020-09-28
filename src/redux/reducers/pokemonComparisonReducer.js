@@ -4,12 +4,11 @@ const initialState = {
   isActive: false, 
 }
 
-function pokemonComparisonReducer (state = initialState, { type, payload }){
+function pokemonComparisonReducer (state = initialState, { type }){
   switch (type) {
     case SHOW_COMPARISON_POKEMON_MODAL:
       return {
-        ...state,
-        ...payload
+        isActive: !state.isActive
       }
     default:
       return state;
