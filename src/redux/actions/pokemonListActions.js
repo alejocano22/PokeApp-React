@@ -27,7 +27,7 @@ export const fetchPokemonList = (url) => (dispatch) => {
           pokemonList: pokemon.results
         }
       })
-    }).catch(error =>{
+    }).catch(error => {
       dispatch({
         type: FETCH_LIST_ERROR,
         payload: {
@@ -61,7 +61,6 @@ export const saveSpecies = (url) => async (dispatch) => {
   dispatch({
     type: FETCH_SPECIES_REQUEST
   })
-
   try {
     const { payload } = await fetchSpecies(url);
     dispatch({
@@ -78,20 +77,16 @@ export const saveSpecies = (url) => async (dispatch) => {
   }
 }
 
-export const updateCurrentPokemonIndex = (index) => (dispatch) => {
-  dispatch({
-    type: UPDATE_POKEMON_INDEX,
-    payload: {
-      currentPokemonIndex: index
-    }
-  })
-}
+export const updateCurrentPokemonIndex = (index) => ({
+  type: UPDATE_POKEMON_INDEX,
+  payload: {
+    currentPokemonIndex: index
+  }
+})
 
-export const updateComparisonPokemonIndex = (index) => (dispatch) => {
-  dispatch({
-    type: UPDATE_POKEMON_INDEX,
-    payload: {
-      comparisonPokemonIndex: index
-    }
-  })
-}
+export const updateComparisonPokemonIndex = (index) => ({
+  type: UPDATE_POKEMON_INDEX,
+  payload: {
+    comparisonPokemonIndex: index
+  }
+})
