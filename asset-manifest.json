@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/pokeapp-react/static/css/main.a0b5a9f1.chunk.css",
-    "main.js": "/pokeapp-react/static/js/main.efafdf90.chunk.js",
-    "main.js.map": "/pokeapp-react/static/js/main.efafdf90.chunk.js.map",
+    "main.js": "/pokeapp-react/static/js/main.bc1a7915.chunk.js",
+    "main.js.map": "/pokeapp-react/static/js/main.bc1a7915.chunk.js.map",
     "runtime-main.js": "/pokeapp-react/static/js/runtime-main.81cd5510.js",
     "runtime-main.js.map": "/pokeapp-react/static/js/runtime-main.81cd5510.js.map",
     "static/js/2.259f020d.chunk.js": "/pokeapp-react/static/js/2.259f020d.chunk.js",
     "static/js/2.259f020d.chunk.js.map": "/pokeapp-react/static/js/2.259f020d.chunk.js.map",
     "index.html": "/pokeapp-react/index.html",
-    "precache-manifest.efd7e7993937cdbdba1aa6a832f818a1.js": "/pokeapp-react/precache-manifest.efd7e7993937cdbdba1aa6a832f818a1.js",
+    "precache-manifest.bcf49dd2030d409f4f5ba47d319ffea6.js": "/pokeapp-react/precache-manifest.bcf49dd2030d409f4f5ba47d319ffea6.js",
     "service-worker.js": "/pokeapp-react/service-worker.js",
     "static/css/main.a0b5a9f1.chunk.css.map": "/pokeapp-react/static/css/main.a0b5a9f1.chunk.css.map",
     "static/js/2.259f020d.chunk.js.LICENSE.txt": "/pokeapp-react/static/js/2.259f020d.chunk.js.LICENSE.txt",
@@ -19,6 +19,6 @@
     "static/js/runtime-main.81cd5510.js",
     "static/js/2.259f020d.chunk.js",
     "static/css/main.a0b5a9f1.chunk.css",
-    "static/js/main.efafdf90.chunk.js"
+    "static/js/main.bc1a7915.chunk.js"
   ]
 }
