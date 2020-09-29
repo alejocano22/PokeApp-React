@@ -23,8 +23,8 @@ const PokemonComparison = (props) => {
   }
 
   if (props.comparisonPokemon.isActive && currentPokemon && comparisonPokemon && currentSpecies && comparisonSpecies) {
-    const CurrentPokemonGender = getGender(currentPokemon.genderRate);
-    const ComparisonPokemonGender = getGender(comparisonPokemon.genderRate);
+    const CurrentPokemonGender = getGender(currentSpecies.genderRate);
+    const ComparisonPokemonGender = getGender(comparisonSpecies.genderRate);
     const pokemonDetailTitle = ['Gender', 'Height', 'Weight'];
     const CurrentPokemonDetailItem = [CurrentPokemonGender, currentPokemon.height, currentPokemon.weight];
     const ComparisonPokemonDetailItem = [ComparisonPokemonGender, comparisonPokemon.height, comparisonPokemon.weight];
