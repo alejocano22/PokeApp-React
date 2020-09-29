@@ -1,13 +1,17 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+:root {
+  --pokemon-red: #ff0000;
+  --pokemon-dark-red: #cc0000;
+  --pokemon-blue: #3b4cca;
+  --pokemon-yellow: #ffde00;
+  --pokemon-dark-yellow: #b3a125;
+  --pokemon-white: #ffffff;
+  --pokemon-black: #000000;
+  --pokemon-transparent-black: #00000080;
+  --pokemon-gray: #808080;
+  --pokemon-light-gray: #e6e6e6;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+body {
+  margin: 0;
+  font-family: sans-serif;
 }
